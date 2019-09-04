@@ -1,3 +1,4 @@
+<!-- Fix MathJax rendering on iOS Safari due to rendering long numbers as phone numbers. -->
 
 
 
@@ -6,6 +7,7 @@
 <html lang="en" class="no-js">
   <head>
     
+	
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -31,17 +33,25 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
+	<meta name="format-detection" content="telephone=no">
+
     
       
-        <title>c1 - CLRS</title>
+        <title>2.asymptotic complexity - Learning Notes of Algorithm</title>
       
     
     
       <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
       
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
       
     
     
@@ -57,13 +67,44 @@
     <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
+      <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-117404761-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
-    <body dir="ltr">
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="blue">
   
     <svg class="md-svg">
       <defs>
@@ -84,9 +125,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="CLRS" class="md-header-nav__button md-logo">
+        <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
           
-            <i class="md-icon"></i>
+            <i class="md-icon">import_contacts</i>
           
         </a>
       </div>
@@ -97,11 +138,11 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              CLRS
+              Learning Notes of Algorithm
             </span>
             <span class="md-header-nav__topic">
               
-                c1
+                2.asymptotic complexity
               
             </span>
           
@@ -154,12 +195,12 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="CLRS" class="md-nav__button md-logo">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
       
-        <i class="md-icon"></i>
+        <i class="md-icon">import_contacts</i>
       
     </a>
-    CLRS
+    Learning Notes of Algorithm
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -170,8 +211,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../.." title="Home" class="md-nav__link">
-      Home
+    <a href="../.." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../color/" title="Color" class="md-nav__link">
+      Color
     </a>
   </li>
 
@@ -185,17 +238,29 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
-    <label class="md-nav__link" for="nav-2">
-      Complexity
+    <label class="md-nav__link" for="nav-3">
+      Fundamentals
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        Complexity
+      <label class="md-nav__title" for="nav-3">
+        Fundamentals
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.1/" title="1.analysis" class="md-nav__link">
+      1.analysis
+    </a>
+  </li>
+
         
           
           
@@ -210,11 +275,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        c1
+        2.asymptotic complexity
       </label>
     
-    <a href="./" title="c1" class="md-nav__link md-nav__link--active">
-      c1
+    <a href="./" title="2.asymptotic complexity" class="md-nav__link md-nav__link--active">
+      2.asymptotic complexity
     </a>
     
       
@@ -226,8 +291,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1.同阶函数集合" class="md-nav__link">
-    1.同阶函数集合
+  <a href="#1" title="1.增长的阶" class="md-nav__link">
+    1.增长的阶
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2.同阶函数集合" class="md-nav__link">
+    2.同阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3.低阶函数集合" class="md-nav__link">
+    3.低阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" title="4.高阶函数集合" class="md-nav__link">
+    4.高阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" title="5.严格低阶" class="md-nav__link">
+    5.严格低阶
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" title="6.注" class="md-nav__link">
+    6.注
   </a>
   
 </li>
@@ -240,6 +340,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.3/" title="3.solving recurrences" class="md-nav__link">
+      3.solving recurrences
+    </a>
   </li>
 
         
@@ -267,8 +379,43 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1.同阶函数集合" class="md-nav__link">
-    1.同阶函数集合
+  <a href="#1" title="1.增长的阶" class="md-nav__link">
+    1.增长的阶
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2.同阶函数集合" class="md-nav__link">
+    2.同阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3.低阶函数集合" class="md-nav__link">
+    3.低阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" title="4.高阶函数集合" class="md-nav__link">
+    4.高阶函数集合
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" title="5.严格低阶" class="md-nav__link">
+    5.严格低阶
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" title="6.注" class="md-nav__link">
+    6.注
   </a>
   
 </li>
@@ -290,12 +437,25 @@
               
                 
                 
-                  <h1>c1</h1>
+                  <h1>2.asymptotic complexity</h1>
                 
-                <p><font face="黑体"></p>
-<h5 id="1">1.同阶函数集合<a class="headerlink" href="#1" title="Permanent link">&para;</a></h5>
-<p>$ \Theta(g(n)) = { f(n)   |  \exists c_1 \text{、} c_2 &gt; 0,  n_0 , \forall n \geq n_0,   c_1g(n) \leq f(n) \leq c_2g(n)  } $</p>
-<p>如果<span><span class="MathJax_Preview">f(n) \in \Theta(g(n)), \ g(n) \text{</span><script type="math/tex">f(n) \in \Theta(g(n)), \ g(n) \text{</script></span>与<span><span class="MathJax_Preview">}f(n)\text{</span><script type="math/tex">}f(n)\text{</script></span> 同阶，记作 <span><span class="MathJax_Preview">} f(n) = \Theta (g(n))</span><script type="math/tex">} f(n) = \Theta (g(n))</script></span></p>
+                <p><font face="思源黑体 CN"></p>
+<h4 id="1">1.增长的阶</h4>
+<p>$ \Theta(1) &lt; \Theta(lgn) &lt; \Theta(\sqrt n) &lt; \Theta(n) &lt; \Theta(nlgn) &lt; \Theta(n^2) &lt; \Theta(n^3) &lt; \Theta(2^n) &lt; \Theta(n!) $</p>
+<h4 id="2">2.同阶函数集合</h4>
+<p>$ \Theta(g(n)) = \lbrace \ f(n) \  | \ \exists c_1 \text{、} c_2 &gt; 0, \ n_0 ,\ \forall n \geq n_0, \ \ c_1g(n) \leq f(n) \leq c_2g(n)  \rbrace $</p>
+<p>如果$f(n) \in \Theta(g(n)), \ g(n) $与$f(n)$同阶，记作$ f(n) = \Theta (g(n))$</p>
+<h4 id="3">3.低阶函数集合</h4>
+<p>$O(g(n))=\lbrace \ f(n)\ \mid \ \exists c &gt; 0, \ n_0, \ \forall n \geq n_0, \ 0 \leq f(n) \leq cg(n)\rbrace$</p>
+<h4 id="4">4.高阶函数集合</h4>
+<p>$\Omega(g(n))=\lbrace \ f(n) \ \mid \ \exists c &gt; 0, \ n_0, \ \forall n \geq n_0, \ 0 \leq cg(n) \leq f(n) \rbrace$</p>
+<h4 id="5">5.严格低阶</h4>
+<p>$o(g(n))=\lbrace \ f(n)\ \mid \ \forall c &gt; 0, \ n_0, \ \forall n \geq n_0, \ 0 \leq f(n) &lt; cg(n)\rbrace$</p>
+<h4 id="6">6.注</h4>
+<p>① $f(n)=\Theta(g(n)) \Rightarrow f(n)=O(g(n))$，Θ 标记强于<font face="Sitka Small"> O </font>标记 </br>
+② <font face="Sitka Small">big O</font> 标记可能不是紧的，例如 $2n^2=O(n^2)$是紧的，但 $2n=O(n^2)$不是 </br>
+③ <font face="Sitka Small">small o</font> 标记用于标记上界但不是紧的的情况，例如 $2n^2 \ne o(n^2)$</p>
+<p></font></p>
                 
                   
                 
@@ -316,7 +476,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../1.1/" title="1.analysis" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -325,11 +485,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                1.analysis
               </span>
             </div>
           </a>
         
+        
+          <a href="../1.3/" title="3.solving recurrences" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                3.solving recurrences
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
@@ -354,6 +528,12 @@
       <script src="../../assets/javascripts/application.245445c6.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
       
     
   </body>

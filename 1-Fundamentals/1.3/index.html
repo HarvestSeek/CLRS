@@ -33,20 +33,20 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="assets/favicon.png">
+      <link rel="shortcut icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
 	<meta name="format-detection" content="telephone=no">
 
     
       
-        <title>Learning Notes of Algorithm</title>
+        <title>3.solving recurrences - Learning Notes of Algorithm</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
       
-        <link rel="stylesheet" href="assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
       
       
         
@@ -55,7 +55,7 @@
       
     
     
-      <script src="assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
@@ -64,10 +64,10 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="css/katex.css">
+      <link rel="stylesheet" href="../../css/katex.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#notes" tabindex="1" class="md-skip">
+      <a href="#1substitution-method" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -125,7 +125,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
+        <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
           
             <i class="md-icon">import_contacts</i>
           
@@ -142,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Preface
+                3.solving recurrences
               
             </span>
           
@@ -195,7 +195,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
       
         <i class="md-icon">import_contacts</i>
       
@@ -209,20 +209,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="." title="Preface" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="Preface" class="md-nav__link">
       Preface
     </a>
-    
   </li>
 
     
@@ -232,7 +223,7 @@
 
 
   <li class="md-nav__item">
-    <a href="color/" title="Color" class="md-nav__link">
+    <a href="../../color/" title="Color" class="md-nav__link">
       Color
     </a>
   </li>
@@ -242,10 +233,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       Fundamentals
@@ -263,7 +256,7 @@
 
 
   <li class="md-nav__item">
-    <a href="1-Fundamentals/1.1/" title="1.analysis" class="md-nav__link">
+    <a href="../1.1/" title="1.analysis" class="md-nav__link">
       1.analysis
     </a>
   </li>
@@ -275,7 +268,7 @@
 
 
   <li class="md-nav__item">
-    <a href="1-Fundamentals/1.2/" title="2.asymptotic complexity" class="md-nav__link">
+    <a href="../1.2/" title="2.asymptotic complexity" class="md-nav__link">
       2.asymptotic complexity
     </a>
   </li>
@@ -285,11 +278,86 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="1-Fundamentals/1.3/" title="3.solving recurrences" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3.solving recurrences
+      </label>
+    
+    <a href="./" title="3.solving recurrences" class="md-nav__link md-nav__link--active">
       3.solving recurrences
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1substitution-method" title="1.替换方法(Substitution method)" class="md-nav__link">
+    1.替换方法(Substitution method)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" title="(a). 猜测的方法" class="md-nav__link">
+    (a). 猜测的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" title="(b). 减去一个低阶项" class="md-nav__link">
+    (b). 减去一个低阶项
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" title="(c). 变量代换" class="md-nav__link">
+    (c). 变量代换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2recursion-tree-method" title="2.递归树法(recursion-tree method)" class="md-nav__link">
+    2.递归树法(recursion-tree method)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3master-method" title="3.主方法(master method)" class="md-nav__link">
+    3.主方法(master method)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -312,8 +380,63 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1substitution-method" title="1.替换方法(Substitution method)" class="md-nav__link">
+    1.替换方法(Substitution method)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" title="(a). 猜测的方法" class="md-nav__link">
+    (a). 猜测的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" title="(b). 减去一个低阶项" class="md-nav__link">
+    (b). 减去一个低阶项
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" title="(c). 变量代换" class="md-nav__link">
+    (c). 变量代换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2recursion-tree-method" title="2.递归树法(recursion-tree method)" class="md-nav__link">
+    2.递归树法(recursion-tree method)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3master-method" title="3.主方法(master method)" class="md-nav__link">
+    3.主方法(master method)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
   
 </nav>
                   </div>
@@ -326,8 +449,48 @@
               
                 
                 
-                <h1 id="notes">Notes</h1>
-<p><font face="思源黑体 CN"></p>
+                  <h1>3.solving recurrences</h1>
+                
+                <p><font face="思源黑体 CN"></p>
+<h3 id="1substitution-method">1.替换方法(<font face="Consolas">Substitution method</font>)</h3>
+<p><font face="Consolas">Steps: </font></br>
+① 猜测解的形式</br>
+② 用数学归纳法求出解的常数，并证明解是正确的。</br></p>
+<blockquote>
+<p>e.g.1  $ \ \ \ T(n)=2T(\lfloor n/2 \rfloor)+n$</p>
+</blockquote>
+<p>猜测 $T(n)=O(nlgn)$，代入得：
+$$ 
+\begin{aligned}
+T(n) &amp; \leq 2(c\lfloor n/2 \rfloor lg(\lfloor n/2 \rfloor))+n \leq cn \ lg(n/2)+n \\
+&amp; = cn\ lgn-cn\ lg2+n=cn\ lgn-cn+n \\
+&amp;\leq cn\ lgn
+\end{aligned}
+$$</p>
+<h4 id="a">(a). 猜测的方法</h4>
+<p>① 通过和已经见过的递归式比较，如 $T(n)=2T(\lfloor n/2 \rfloor+17)+n$ 中17起到的影响可能不大</br>
+② 先证明较低的上界或下界</p>
+<h4 id="b">(b). 减去一个低阶项</h4>
+<blockquote>
+<p>e.g. $\ \ \ T(n)=T(\lfloor n/2 \rfloor)+T(\lceil n/2 \rceil)+1$</p>
+</blockquote>
+<p>猜测 $T(n)=O(n)$，可以得到：$T(n)\leq c\lfloor n/2 \rfloor + c\lceil n/2 \rceil + 1=cn+1$，解不出来。</br>
+直觉上应该尝试更大的界 $O(n^2)$，但原来的结果是正确的，因此必须做出更强的归纳假设：由于和结果只差一个常数，根据数学归纳法的不等式，减去一个低阶项，猜测 $T(n)\leq cn-d$，则可以得到：$T(n)\leq c\lfloor n/2 \rfloor - d + c\lceil n/2 \rceil - d + 1=cn-2d+1\leq cn-d$。</p>
+<h4 id="c">(c). 变量代换</h4>
+<blockquote>
+<p>e.g. $ \ \ \ T(n)=2T(\sqrt n)+lgn$</p>
+</blockquote>
+<p>令 $m=lgn$，得 $T(2^m)=2T(2^{m/2})+m$；重命名 $S(m)=T(2^m)$，得 $S(m)=2S(m/2)+m$。
+最后 $T(n)=T(2^m)=S(m)=O(mlgm)=O(lgn·lglgn)$</p>
+<h3 id="2recursion-tree-method">2.递归树法(<font face="Consolas">recursion-tree method</font>)</h3>
+<p>&emsp;对递归式进行逐级展开，往往要忍受一些不精确，通常可以得到上界或下界，配合代入法使用。</p>
+<h3 id="3master-method">3.主方法(<font face="Consolas">master method</font>)</h3>
+<p>主定理：</br>
+令 $a\geq 1$ 和 $ b&gt;1 $ 是常数，$f(n)$ 是一个函数，$T(n)$ 是定义在非负整数上的递归式：$T(n)=aT(n/b)+f(n)$，那么：</br>
+&emsp;① 若对某个 $\epsilon&gt;0$，有 $f(n)=O(n^{log_ba-\epsilon})$，则 $T(n)=\Theta(n^{log_ba})$</br>
+&emsp;② 若 $f(n)=O(n^{log_ba})$，则 $T(n)=\Theta(n^{log_ba}·lgn)$</br>
+&emsp;③ 若对某个 $\epsilon&gt;0$，有 $f(n)=\Omega(n^{log_ba+\epsilon})$，且对充分大的 $n$ 有 $af(n/b)\leq cf(n)$，则 $T(n)=\Theta(f(n))$</br></p>
+<p></font></p>
                 
                   
                 
@@ -348,20 +511,20 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-        
-          <a href="color/" title="Color" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../1.2/" title="2.asymptotic complexity" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  Next
+                  Previous
                 </span>
-                Color
+                2.asymptotic complexity
               </span>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           </a>
+        
         
       </nav>
     </div>
@@ -383,11 +546,11 @@
       
     </div>
     
-      <script src="assets/javascripts/application.245445c6.js"></script>
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
-        <script src="js/katex.js"></script>
+        <script src="../../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
