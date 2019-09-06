@@ -359,6 +359,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
+    4.优先队列(priority queue)
+  </a>
+  
+</li>
+      
       
       
       
@@ -410,6 +417,13 @@
         <li class="md-nav__item">
   <a href="#3" title="3.堆排序" class="md-nav__link">
     3.堆排序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
+    4.优先队列(priority queue)
   </a>
   
 </li>
@@ -476,7 +490,8 @@
     <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">father</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table></p>
+</td></tr></table>
+$T(n)=O(lgn)=O(h)$</p>
 <p>② <font face="Consolas"><strong><em>BUILD-MAX-HEAP(A)</em></strong></font>: </br>&emsp;建堆</p>
 <p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -491,7 +506,30 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-自底向上，迭代调整最大堆</p>
+自底向上，迭代通过<font face="Consolas"> <em>MaxHeapify(A, i)</em> </font>调整最大堆。</br>$T(n)=O(n)$，最大调整次数为各结点高度和。</p>
+<p>③ <font face="Consolas"><strong><em>HEAP-INCREASE-KEY(A, i, key)</em></strong></font>: </br>&emsp;增大堆中某个元素的值。因为增大 <font face="Consolas"><em>A[i]</em></font> 后，最大堆的性质可能被违背，在其到根结点的路径上不断与其父结点比较并交换，寻找适当的插入位置。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">HeapIncreaseKey</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error: new key is smaller&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$</p>
 <h4 id="3">3.堆排序</h4>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -513,6 +551,46 @@
 </pre></div>
 </td></tr></table>
 
+<h4 id="4priority-queue">4.优先队列(<font face="Consolas">priority queue</font>)</h4>
+<p>一个最大优先队列应当满足以下操作：</br>
+&emsp;① <font face="Consolas"> <em>INSERT(S, x)</em></font>: 把元素<font face="Consolas"> <em>x</em> </font>插入集合<font face="Consolas"> <em>S</em></font>。</br>
+&emsp;② <font face="Consolas"> <em>MAXIMUM(S)</em></font>: 返回<font face="Consolas"> <em>S</em> </font>中具有最大关键字的元素。</br>
+&emsp;③ <font face="Consolas"> <em>EXTRACT-MAX(S)</em></font>: 去掉并返回<font face="Consolas"> <em>S</em> </font>中最大关键字元素。</br>
+&emsp;④ <font face="Consolas"> <em>INCREASE-KEY(s, x, k)</em></font>: 把<font face="Consolas"> <em>x</em> </font>的值增加到<font face="Consolas"> <em>k</em></font>。</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">MaxHeapInsert</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">INF</span><span class="p">;</span>
+    <span class="n">HeapIncreaseKey</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="nf">HeapExtractMax</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;heap underflow&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">];</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span> 
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$</p>
 <p></font></p>
                 
                   
