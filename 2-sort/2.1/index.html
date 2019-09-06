@@ -531,6 +531,7 @@ $T(n)=O(lgn)=O(h)$</p>
 </td></tr></table>
 $T(n)=O(lgn)$</p>
 <h4 id="3">3.堆排序</h4>
+<p>先建堆，随后不断把堆顶元素交换到末尾、缩小堆并调整，直到排好序。
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
@@ -550,9 +551,9 @@ $T(n)=O(lgn)$</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-
+相比于快速排序，堆排序无论好坏情况，复杂度都是 $O(nlgn)$，但是它的复杂度中的常数较大，因此通常比快排慢。</p>
 <h4 id="4priority-queue">4.优先队列(<font face="Consolas">priority queue</font>)</h4>
-<p>一个最大优先队列应当满足以下操作：</br>
+<p>一个最大优先队列应有以下操作：</br>
 &emsp;① <font face="Consolas"> <em>INSERT(S, x)</em></font>: 把元素<font face="Consolas"> <em>x</em> </font>插入集合<font face="Consolas"> <em>S</em></font>。</br>
 &emsp;② <font face="Consolas"> <em>MAXIMUM(S)</em></font>: 返回<font face="Consolas"> <em>S</em> </font>中具有最大关键字的元素。</br>
 &emsp;③ <font face="Consolas"> <em>EXTRACT-MAX(S)</em></font>: 去掉并返回<font face="Consolas"> <em>S</em> </font>中最大关键字元素。</br>
