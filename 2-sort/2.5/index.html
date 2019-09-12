@@ -40,7 +40,7 @@
 
     
       
-        <title>1.Simple Sort - Learning Notes of Algorithm</title>
+        <title>5.Sorting in linear time - Learning Notes of Algorithm</title>
       
     
     
@@ -116,6 +116,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -138,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                1.Simple Sort
+                5.Sorting in linear time
               
             </span>
           
@@ -310,18 +314,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="1.Simple Sort" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../2.1/" title="1.Simple Sort" class="md-nav__link">
       1.Simple Sort
     </a>
-    
   </li>
 
         
@@ -365,11 +362,52 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../2.5/" title="5.Sorting in linear time" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        5.Sorting in linear time
+      </label>
+    
+    <a href="./" title="5.Sorting in linear time" class="md-nav__link md-nav__link--active">
       5.Sorting in linear time
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 比较排序算法的下界" class="md-nav__link">
+    1. 比较排序算法的下界
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 计数排序" class="md-nav__link">
+    2. 计数排序
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -385,15 +423,98 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 比较排序算法的下界" class="md-nav__link">
+    1. 比较排序算法的下界
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 计数排序" class="md-nav__link">
+    2. 计数排序
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>1.Simple Sort</h1>
+                  <h1>5.Sorting in linear time</h1>
                 
-                
+                <p><font face="思源黑体 CN"></p>
+<h3 id="1">1. 比较排序算法的下界</h3>
+<p>&emsp;任何比较排序都可以被抽象为一棵决策树(<font face="Consolas">decision tree</font>)，下图为三个元素的简单插入排序的决策树。在决策树中，从根结点到任意一个可达叶结点中最长简单路径的长度，表示对应排序算法中最坏情况下的比较次数，即决策树的高度；输入规模 $n$ 对应的 $n!$ 中排列至少都应该出现在决策树的叶结点中。因此，决策树高度的下界就是比较排序运行时间的下界。
+<img alt="" src="../../img/2.5.1.png" />
+&emsp;<font face="汉仪全唐诗简"><strong>定理：</strong></font>在最坏情况下，任何比较排序都需要做 $\Omega(nlgn)$ 次比较。</br>
+&emsp;<font face="汉仪全唐诗简">设决策树高为 $h$, 具有 $l$ 个可达的叶结点。由 $n!\leq l\leq 2^h$，我们有 $h\geq lg(n!)=\Omega(nlgn)$
+</font></br>
+&emsp;由此，堆排序和归并排序都是渐进最优的比较排序算法。</p>
+<h3 id="2">2. 计数排序</h3>
+<p>&emsp;假设 $n$ 个元素中的每一个都是在 $[0,\ k)$ 之间的整数，当 $k=O(n)$ 时，排序运行时间为 $\Theta(n)$。</br>
+&emsp;<font face="Consolas"><em><strong>COUNTING-SORT(A, B, k)</strong></em></font>: <font face="Consolas"><em>A</em></font> 为待排序数组，<font face="Consolas"><em>B</em></font> 为结果数组，<font face="Consolas"><em>k</em></font> 为整数范围。首先在临时数组<font face="Consolas"> <em>C</em></font> 中统计小于等于相应下标的对应的数的个数，然后根据其确定<font face="Consolas"> <em>A</em></font> 中每个元素的最终位置。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">CountingSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">A</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">B</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">C</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">B</span><span class="p">[</span><span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">--</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+&emsp;计数排序的一个重要性质是它是稳定的。各元素个数已知，可以控制其相对次序不改变。</p>
+<p></font></p>
                 
                   
                 
@@ -414,7 +535,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../1-Fundamentals/1.3/" title="3.solving recurrences" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../2.4/" title="4.Quicksort" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -423,25 +544,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                3.solving recurrences
+                4.Quicksort
               </span>
             </div>
           </a>
         
-        
-          <a href="../2.2/" title="2.Mergesort" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                2.Mergesort
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

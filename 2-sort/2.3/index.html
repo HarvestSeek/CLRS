@@ -1,0 +1,729 @@
+<!-- Fix MathJax rendering on iOS Safari due to rendering long numbers as phone numbers. -->
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+	
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+	<meta name="format-detection" content="telephone=no">
+
+    
+      
+        <title>3.Heap and Heapsort - Learning Notes of Algorithm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#4caf50">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../css/katex.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-117404761-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="green" data-md-color-accent="blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">import_contacts</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Learning Notes of Algorithm
+            </span>
+            <span class="md-header-nav__topic">
+              
+                3.Heap and Heapsort
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
+      
+        <i class="md-icon">import_contacts</i>
+      
+    </a>
+    Learning Notes of Algorithm
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Preface" class="md-nav__link">
+      Preface
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../color/" title="Color" class="md-nav__link">
+      Color
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Fundamentals
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Fundamentals
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Fundamentals/1.1/" title="1.analysis" class="md-nav__link">
+      1.analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Fundamentals/1.2/" title="2.asymptotic complexity" class="md-nav__link">
+      2.asymptotic complexity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../1-Fundamentals/1.3/" title="3.solving recurrences" class="md-nav__link">
+      3.solving recurrences
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Sort and order statistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Sort and order statistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.1/" title="1.Simple Sort" class="md-nav__link">
+      1.Simple Sort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.2/" title="2.Mergesort" class="md-nav__link">
+      2.Mergesort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        3.Heap and Heapsort
+      </label>
+    
+    <a href="./" title="3.Heap and Heapsort" class="md-nav__link md-nav__link--active">
+      3.Heap and Heapsort
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1.堆的定义" class="md-nav__link">
+    1.堆的定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2.基本操作" class="md-nav__link">
+    2.基本操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3.堆排序" class="md-nav__link">
+    3.堆排序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
+    4.优先队列(priority queue)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.4/" title="4.Quicksort" class="md-nav__link">
+      4.Quicksort
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../2.5/" title="5.Sorting in linear time" class="md-nav__link">
+      5.Sorting in linear time
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1.堆的定义" class="md-nav__link">
+    1.堆的定义
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2.基本操作" class="md-nav__link">
+    2.基本操作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3.堆排序" class="md-nav__link">
+    3.堆排序
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4priority-queue" title="4.优先队列(priority queue)" class="md-nav__link">
+    4.优先队列(priority queue)
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>3.Heap and Heapsort</h1>
+                
+                <p><font face="思源黑体 CN"></p>
+<h4 id="1">1.堆的定义</h4>
+<p>(1). 二叉堆：一个用数组表示的完全二叉树(<font face="Consolas">complete binary tree</font>)</br>
+(2). 最大堆：除了根结点以外的所有结点 $i$ 都满足 $A[PARENT(i)]  \geq A[i]$</br>
+(3). 最小堆：除了根结点以外的所有结点 $i$ 都满足 $A[PARENT(i)] \leq A[i]$</br>
+(4). 结点的高度：该结点到叶结点最长简单路径上边的数目</br>
+(5). 堆的高度：根结点的高度</p>
+<h4 id="2">2.基本操作</h4>
+<p>① <font face="Consolas"><strong><em>MAX-HEAPIFY(A, i)</em></strong></font>: </br>&emsp;假设当前堆以<font face="Consolas"> <em>LEFT(i)</em> </font>和<font face="Consolas"> <em>RIGHT(i)</em> </font>为根结点的二叉树都是最大堆，<font face="Consolas"> <em>A[i]</em> </font>与这两个结点的关系不确定，该操作用于维护最大堆的性质。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">MaxHeapify</span><span class="p">(</span><span class="n">Heap</span><span class="o">*</span> <span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">father</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">child</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">root</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">child</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&amp;&amp;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">child</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">father</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">child</span><span class="p">];</span>
+        <span class="n">father</span> <span class="o">=</span> <span class="n">child</span><span class="p">;</span>
+        <span class="n">child</span> <span class="o">*=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">father</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)=O(h)$</p>
+<p>② <font face="Consolas"><strong><em>BUILD-MAX-HEAP(A)</em></strong></font>: </br>&emsp;建堆</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">BuildMaxHeap</span><span class="p">(</span><span class="n">Heap</span><span class="o">*</span> <span class="n">H</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+自底向上，迭代通过<font face="Consolas"> <em>MaxHeapify(A, i)</em> </font>调整最大堆。</br>$T(n)=O(n)$，最大调整次数为各结点高度和。</p>
+<p>③ <font face="Consolas"><strong><em>HEAP-INCREASE-KEY(A, i, key)</em></strong></font>: </br>&emsp;增大堆中某个元素的值。因为增大 <font face="Consolas"><em>A[i]</em></font> 后，最大堆的性质可能被违背，在其到根结点的路径上不断与其父结点比较并交换，寻找适当的插入位置。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">HeapIncreaseKey</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;error: new key is smaller&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">];</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$</p>
+<h4 id="3">3.堆排序</h4>
+<p>先建堆，随后不断把堆顶元素交换到末尾、缩小堆并调整，直到排好序。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">HeapSort</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">BuildMaxHeap</span><span class="p">(</span><span class="n">H</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+        <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+相比于快速排序，堆排序无论好坏情况，复杂度都是 $O(nlgn)$，但是它的复杂度中的常数较大，因此通常比快排慢。</p>
+<p><strong>堆排序的特点：</strong></br>
+① 堆排序不稳定</br>
+② 对缓存不友好</br>
+③ 无所谓最好、最坏、平均，运行时间为 $O(nlgn)$ (当所有元素相同时为 $O(n)$)</p>
+<h4 id="4priority-queue">4.优先队列(<font face="Consolas">priority queue</font>)</h4>
+<p>一个最大优先队列应有以下操作：</br>
+&emsp;① <font face="Consolas"> <em>INSERT(S, x)</em></font>: 把元素<font face="Consolas"> <em>x</em> </font>插入集合<font face="Consolas"> <em>S</em></font>。</br>
+&emsp;② <font face="Consolas"> <em>MAXIMUM(S)</em></font>: 返回<font face="Consolas"> <em>S</em> </font>中具有最大关键字的元素。</br>
+&emsp;③ <font face="Consolas"> <em>EXTRACT-MAX(S)</em></font>: 去掉并返回<font face="Consolas"> <em>S</em> </font>中最大关键字元素。</br>
+&emsp;④ <font face="Consolas"> <em>INCREASE-KEY(s, x, k)</em></font>: 把<font face="Consolas"> <em>x</em> </font>的值增加到<font face="Consolas"> <em>k</em></font>。</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">MaxHeapInsert</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">INF</span><span class="p">;</span>
+    <span class="n">HeapIncreaseKey</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">,</span> <span class="n">key</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">int</span> <span class="nf">HeapExtractMax</span><span class="p">(</span><span class="n">Heap</span> <span class="o">*</span><span class="n">H</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;heap underflow&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">H</span><span class="o">-&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">];</span>
+    <span class="n">H</span><span class="o">-&gt;</span><span class="n">size</span><span class="o">--</span><span class="p">;</span>
+    <span class="n">MaxHeapify</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span> 
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+$T(n)=O(lgn)$</p>
+<p></font></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../2.2/" title="2.Mergesort" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                2.Mergesort
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../2.4/" title="4.Quicksort" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                4.Quicksort
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
