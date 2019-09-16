@@ -636,7 +636,7 @@
 &emsp;在通常情况下，如果 $b=O(lgn), r\approx lgn$，基数排序运行时间为 $\Theta(n)$。比起快速排序，基数排序虽然循环次数少，但它每次的操作花费时间长，隐含的常数大，它们的比较还要取决于硬件特性和具体的数据分布。如果使用计数排序对单个数位排序，则基数排序不是原址排序，更加浪费空间。</p>
 <h3 id="4">4. 桶排序</h3>
 <p>&emsp;假设输入的数据服从均匀分布，则平均情况下桶排序的时间代价为 $O(n)$。</br>
-&emsp;<font face="Consolas"><em><strong>BUCKET-SORT(A)</strong></em></font>: 把区间 $[0,\ 1]$ 十等分，构造一个链表的数组 $B$ ，数组每个元素对应一个被等分的区间。对每个链表使用插入排序，最后合并链表即完成排序。
+&emsp;<font face="Consolas"><em><strong>BUCKET-SORT(A)</strong></em></font>: 把区间 $[0,\ 1]$ 十等分，并构造一个链表的数组 $B$ ，数组每个元素对应一个被等分的区间。对每个链表使用插入排序，最后合并链表即完成排序。
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
