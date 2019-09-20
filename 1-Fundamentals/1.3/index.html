@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#1substitution-method" tabindex="1" class="md-skip">
+      <a href="#1-substitution-method" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -303,8 +303,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1substitution-method" title="1.替换方法(Substitution method)" class="md-nav__link">
-    1.替换方法(Substitution method)
+  <a href="#1-substitution-method" title="1. 替换方法(Substitution method)" class="md-nav__link">
+    1. 替换方法(Substitution method)
   </a>
   
     <nav class="md-nav">
@@ -337,15 +337,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2recursion-tree-method" title="2.递归树法(recursion-tree method)" class="md-nav__link">
-    2.递归树法(recursion-tree method)
+  <a href="#2-recursion-tree-method" title="2. 递归树法(recursion-tree method)" class="md-nav__link">
+    2. 递归树法(recursion-tree method)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3master-method" title="3.主方法(master method)" class="md-nav__link">
-    3.主方法(master method)
+  <a href="#3-master-method" title="3. 主方法(master method)" class="md-nav__link">
+    3. 主方法(master method)
   </a>
   
 </li>
@@ -462,6 +462,66 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      III Data Structures
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        III Data Structures
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3-DataStructures/3.1/" title="1.Elementary data structures" class="md-nav__link">
+      1.Elementary data structures
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3-DataStructures/3.2/" title="2.Hash tables" class="md-nav__link">
+      2.Hash tables
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../3-DataStructures/3.3/" title="3.Binary search trees" class="md-nav__link">
+      3.Binary search trees
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -481,8 +541,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1substitution-method" title="1.替换方法(Substitution method)" class="md-nav__link">
-    1.替换方法(Substitution method)
+  <a href="#1-substitution-method" title="1. 替换方法(Substitution method)" class="md-nav__link">
+    1. 替换方法(Substitution method)
   </a>
   
     <nav class="md-nav">
@@ -515,15 +575,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2recursion-tree-method" title="2.递归树法(recursion-tree method)" class="md-nav__link">
-    2.递归树法(recursion-tree method)
+  <a href="#2-recursion-tree-method" title="2. 递归树法(recursion-tree method)" class="md-nav__link">
+    2. 递归树法(recursion-tree method)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3master-method" title="3.主方法(master method)" class="md-nav__link">
-    3.主方法(master method)
+  <a href="#3-master-method" title="3. 主方法(master method)" class="md-nav__link">
+    3. 主方法(master method)
   </a>
   
 </li>
@@ -548,7 +608,7 @@
                   <h1>3.solving recurrences</h1>
                 
                 <p><font face="思源黑体 CN"></p>
-<h3 id="1substitution-method">1.替换方法(<font face="Consolas">Substitution method</font>)</h3>
+<h3 id="1-substitution-method">1. 替换方法(<font face="Consolas">Substitution method</font>)</h3>
 <p><font face="Consolas">Steps: </font></br>
 ① 猜测解的形式</br>
 ② 用数学归纳法求出解的常数，并证明解是正确的。</br></p>
@@ -578,13 +638,13 @@ $$</p>
 </blockquote>
 <p>令 $m=lgn$，得 $T(2^m)=2T(2^{m/2})+m$；重命名 $S(m)=T(2^m)$，得 $S(m)=2S(m/2)+m$。
 最后 $T(n)=T(2^m)=S(m)=O(mlgm)=O(lgn·lglgn)$</p>
-<h3 id="2recursion-tree-method">2.递归树法(<font face="Consolas">recursion-tree method</font>)</h3>
+<h3 id="2-recursion-tree-method">2. 递归树法(<font face="Consolas">recursion-tree method</font>)</h3>
 <p>&emsp;对递归式进行逐级展开，往往要忍受一些不精确，通常可以得到上界或下界，配合代入法使用。</p>
-<h3 id="3master-method">3.主方法(<font face="Consolas">master method</font>)</h3>
+<h3 id="3-master-method">3. 主方法(<font face="Consolas">master method</font>)</h3>
 <p>主定理：</br>
 令 $a\geq 1$ 和 $ b&gt;1 $ 是常数，$f(n)$ 是一个函数，$T(n)$ 是定义在非负整数上的递归式：$T(n)=aT(n/b)+f(n)$，那么：</br>
 &emsp;① 若对某个 $\epsilon&gt;0$，有 $f(n)=O(n^{log_ba-\epsilon})$，则 $T(n)=\Theta(n^{log_ba})$</br>
-&emsp;② 若 $f(n)=O(n^{log_ba})$，则 $T(n)=\Theta(n^{log_ba}·lgn)$</br>
+&emsp;② 若 $f(n)=O(n^{log_ba})$，则 $T(n)=\Theta(n^{log_ba}·log_bn)$</br>
 &emsp;③ 若对某个 $\epsilon&gt;0$，有 $f(n)=\Omega(n^{log_ba+\epsilon})$，且对充分大的 $n$ 有 $af(n/b)\leq cf(n)$，则 $T(n)=\Theta(f(n))$</br></p>
 <p></font></p>
                 
