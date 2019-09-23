@@ -647,7 +647,7 @@ E[\frac{1}{n}\sum_{i=1}^{n}(1+\sum_{j=i+1}^{n}X_{ij})]&amp;=\frac{1}{n}\sum_{i=1
 &amp;=1+\frac{\alpha}{2}-\frac{\alpha}{2n}
 \end{aligned}
 $$
-&emsp;因此，以此查找需要的时间为 $\Theta (2+\frac{\alpha}{2}-\frac{\alpha}{2n})=\Theta (1+\alpha)$。</br>
+&emsp;因此，查找需要的时间为 $\Theta (2+\frac{\alpha}{2}-\frac{\alpha}{2n})=\Theta (1+\alpha)$。</br>
 &emsp;如果散列表的槽数与表中的元素数成正比，即 $n=O(m)$，则 $\alpha=O(1)$，这意味着查找需要 $O(1)$ 时间，也意味着包括插入、删除在内的全部字典操作在平均情况下都只需要 $O(1)$ 时间。</p>
 <h3 id="3">3. 散列函数</h3>
 <p>&emsp;一个好的散列函数应(近似)满足简单均匀散列 (<font face="Consolas">simple uniform hashing</font>) 假设：每个关键字都被等可能地散列到 $m$ 个槽位中的任何一个，并与其他关键字已散列到哪个槽位无关。</br>
@@ -669,7 +669,7 @@ $$
 $$
 h(k)=\lfloor 2^p(\frac{k\ ·s}{2^w}\ mod\ 1)\rfloor
 $$
-&emsp;整个映射过程可以理解为：$k$ 与 $s$ 的乘积结果的 $2w$ 位数右移 $w$ 位变成小数后，用取模运算保留小数位，再左移 $p$ 位后取整，整体相当于只保留 $k\ ·s$ 的后 $w$ 位的前 $p$ 位。</br>
+&emsp;整个映射过程可以理解为：$k$ 与 $s$ 的乘积结果的 $2w$ 位数右移 $w$ 位变成小数后，用取模运算保留小数位，再左移 $p$ 位后取整。整体相当于只保留 $k\ ·s$ 的后 $w$ 位的前 $p$ 位。</br>
 &emsp;此方法对任何 $A$ 值都适用，但对某些特定的 $A$ 效果更好，最佳选择与待散列的数据有关。<font face="Consolas"><em>Knuth</em></font> 认为 $A\approx (\sqrt{5}-1)/2=0.6180339887$ 是一个比较理想的值。
 </font></p>
                 
