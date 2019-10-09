@@ -495,6 +495,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-universal-hashing" title="(3). 全域散列 (universal hashing)" class="md-nav__link">
+    (3). 全域散列 (universal hashing)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -595,6 +602,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-universal-hashing" title="(3). 全域散列 (universal hashing)" class="md-nav__link">
+    (3). 全域散列 (universal hashing)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -630,9 +644,9 @@
 <h4 id="1-chaining">(1). 链接法 (<font face="Consolas">chaining</font>)</h4>
 <p>&emsp;把散列到同一个槽的元素都放在一个链表中。插入的时间代价为 $O(1)$，需要避免重复元素则需要额外的开销；如果使用双向链表，删除操作也为 $O(1)$，输入参数为关键字对应的结点指针。</br>
 &emsp;给定一个能存放 $n$ 个元素的、具有 $m$ 个槽位的散列表 $T$，定义 $T$ 的装载因子 (<font face="Consolas">load factor</font>) 为 $\alpha=n/m$，即一个链的平均存储元素数。设 $T[i]$ 的长度为 $n_i$，则有 $n=n_0+n_1+...+n_{m-1}$，$E[n_i]=\alpha=n/m$。假定 $h(k)$ 的计算时间为 $O(1)$，下面分析链接法的性能。</p>
-<p><font face="汉仪全唐诗简"><strong>定理</strong>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>不成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
+<p><font face="汉仪全唐诗简"><font color=blue><strong>定理</strong></font>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>不成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
 &emsp;当查找关键字 $k$ 时，在不成功查找的前提下，相当于找至链表 $T[h(k)]$ 末尾的期望时间，且 $E[n_{h(k)}]=\alpha$。于是，需要的总时间为 $\Theta (1+\alpha)$。</p>
-<p><font face="汉仪全唐诗简"><strong>定理</strong>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
+<p><font face="汉仪全唐诗简"><font color=blue><strong>定理</strong></font>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
 &emsp;假定要查找的关键字是 $n$ 个元素中的任何一个，且是等可能的。在对 $x$ 的一次成功查找中，查找的元素数是排列在 $x$ 前的元素数加一，且出现在 $x$ 前的元素均是在 $x$ 之后插入的元素。</br>
 &emsp;基于此，设 $x_i$ 为第 $i$ 个插入表中的元素，且 $k_i=x_i.key$，令$$X_{ij}=
 \begin{cases}
@@ -670,8 +684,30 @@ $$
 h(k)=\lfloor 2^p(\frac{k\ ·s}{2^w}\ mod\ 1)\rfloor
 $$
 &emsp;整个映射过程可以理解为：$k$ 与 $s$ 的乘积结果的 $2w$ 位数右移 $w$ 位变成小数后，用取模运算保留小数位，再左移 $p$ 位后取整。整体相当于只保留 $k\ ·s$ 的后 $w$ 位的前 $p$ 位。</br>
-&emsp;此方法对任何 $A$ 值都适用，但对某些特定的 $A$ 效果更好，最佳选择与待散列的数据有关。<font face="Consolas"><em>Knuth</em></font> 认为 $A\approx (\sqrt{5}-1)/2=0.6180339887$ 是一个比较理想的值。
-</font></p>
+&emsp;此方法对任何 $A$ 值都适用，但对某些特定的 $A$ 效果更好，最佳选择与待散列的数据有关。<font face="Consolas"><em>Knuth</em></font> 认为 $A\approx (\sqrt{5}-1)/2=0.6180339887$ 是一个比较理想的值。</p>
+<h4 id="3-universal-hashing">(3). 全域散列 (<font face="Consolas">universal hashing</font>)</h4>
+<p>&emsp;对任一个散列函数，都存在最坏情况，使得所有关键字都被散列至同一个槽中。唯一有效的改进方法是随机选取散列函数，获得较好的平均时间，这种方法就是全域散列。</br>
+&emsp;设 $\mathcal{H}$ 为有限散列函数 ( $U\rightarrow \lbrace 0,...,m-1\rbrace$ ) 的集合，如果对每一对不同的关键字 $k,\ l\in U$，满足 $h(k)=h(l)$ 的函数 $h\in \mathcal{H}$ 的个数至多为 $|\mathcal{H}|/m$，那么函数组 $\mathcal{H}$ 是全域的。(<font face="Consolas">or:</font> 从中随机选取一个散列函数，对不同的 $k,\ l$，发生冲突的概率不大于 $1/m$).</br>
+&emsp;下面的结论说明了全域散列具有较好的平均性能。</p>
+<p><font face="汉仪全唐诗简">
+<font color=blue>
+<strong>定理</strong>：</font>设 $h\in \mathcal{H}$，将 $n$ 个关键字散列至大小为 $m$ 的表 $T$ 中，并使用链接法解决冲突。若 $k$ 不在表中，则 $k$ 被散列至其中链表的期望长度 $E[n_{h(k)}]$ 至多为 $\alpha$；若 $k$ 在表中，则包含 $k$ 的链表期望长度 $E[n_{h(k)}]$ 至多为 $1+\alpha$。
+</font></br></p>
+<p>[证] 对不同关键字 $k、l$，定义 $X_{kl}=I\lbrace h(k)=h(l) \rbrace$，由全域散列的定义，$P(\lbrace h(k)=h(l) \rbrace)\leq 1/m$，所以 $E[X_{kl}]\leq 1/m$。</br>
+&emsp;定义表示与 $k$ 散列至同一个槽的关键字的数量的随机变量：$$Y_k=\sum_{l\in T,l \ne k} E[X_{kl}]$$。于是，有 $$E[Y_k]\leq \sum_{l\in T,l \ne k} \frac{1}{m}$$。</br>
+&emsp;<font face="Consolas">(i). </font>如果 $k$ 不在表 $T$ 中，那么 $|\lbrace l\in T, l\ne k \rbrace |=n$，于是 $E[n_{h(k)}]=E[Y_k]\leq n/m$。</br>
+&emsp;<font face="Consolas">(ii). </font>如果 $k$ 在表 $T$ 中，那么$|\lbrace l\in T, l \ne k \rbrace |=n-1$，于是 $E[n_{h(k)}]=E[Y_k]+1\leq (n-1)/m+1&lt;1+\alpha$。</p>
+<p>&emsp;最后给出设计一个全域散列函数类的方法。</br>
+&emsp;首先，选取一个足够大的素数 $p$，使得对任意的关键字都有 $k\in [0, p-1]$ ($p&gt;m$) 。令 $Z_p=\lbrace 0,1,...,p-1\rbrace$，$Z_p^{\ast} =\lbrace 1,2,...,p-1\rbrace$。 </br>
+&emsp;然后，对任何 $a\in Z_p^{\ast}, b\in Z_p$，定义 $$h_{ab}(k)=((ak+b)\mod p)\mod m$$
+所有这样的函数构成的函数簇 $\mathcal{H}_{pm}=\lbrace h_{ab}:a\in Z_p^{\ast}, b\in Z_p\rbrace $ 是全域的。$\mathcal{H}$ 中共包含 $p(p-1)$ 个函数，每一个函数都将 $Z_p$ 映射到 $Z_m$，且它有一个良好的性质：$m$ 的选择是任意的，不一定是素数。</br></p>
+<p>&emsp;下面说明结论的正确性。</br>
+&emsp;考虑 $Z_p$ 中任两个不同的关键字 $k、l$，令 $r=(ak+b)\mod p$，$s=(al+b)\mod p$，于是有 $r-s\equiv a(k-l) \mod p$。因为 $a&lt; p$，$k-l&lt; p$，且 $p$ 是素数，那么 $r\ne s$，这样 $k$ 和 $l$ 首先被映射到不同的实数上。此外，数对 $(a,b)$ 有 $p(p-1)$ 中可能的选择，每一种选择都会解出不同的 $(r,s)(r\ne s)$(原因略)，因此 $(a,b)$ 与 $(r,s)$ 之间存在一个一一对应关系，所以 $k$ 和 $l$ 冲突的概率就等于 $r\equiv s(\mod m)$ 的概率。
+</br>
+&emsp;当选定一个 $r$，$s$ 就只能在剩下 $p-1$ 个数中选择，其中满足 $s\ne r$ 且 $s\equiv r(\mod m)$ 的值的个数至多为：$\lceil p/m \rceil-1\leq((p+m-1)/m)-1=(p-1)/m$。</br>
+&emsp;当进行最后一步模 $m$ 运算时，$s$ 与 $r$ 冲突的概率至多为 $((p-1)/m)/(p-1)=1/m$。</br>
+&emsp;因此，对任意不同的 $k,l\in Z_p$，有 $P(\lbrace h_{ab}(k)=h_{ab}(l) \rbrace)\leq 1/m$。</p>
+<p></font></p>
                 
                   
                 
