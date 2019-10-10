@@ -569,7 +569,8 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-&emsp;通过递归遍历一棵二叉树，递归的过程相当于沿着树的外沿周游一圈。对每一个结点来说，按照向左右递归划分出了三种访问时机，在每个时机访问对应了根和左右子树之间的一个相对访问次序，分别为前序、中序、后序。</p>
+&emsp;通过递归遍历一棵二叉树，递归的过程相当于沿着树的外沿周游一圈。对每一个结点来说，按照向左右递归划分出了三种访问时机，在每个时机访问对应了根和左右子树之间的一个相对访问次序，分别为前序、中序、后序。</br>
+&emsp;以下遍历算法所需时间均为 $\Theta (n)$。</p>
 <p><strong>① 非递归先序、中序遍历</strong></br>
 &emsp;可以通过辅助栈，入栈模拟结点的先序时机，出栈模拟中序时机，迭代终止的条件为栈空且当前的结点指针也为空。
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -600,7 +601,9 @@
 </pre></div>
 </td></tr></table></p>
 <p><strong>② 非递归后序遍历</strong></br>
-&emsp;仍沿用 ① 中的思路，入栈模拟先序时机，出栈模拟后序时机。主体思路是，如果当前指针为空，需要判断栈顶结点的右子树是否也被访问过，再决定是否出栈。
+&emsp;入栈模拟先序时机，出栈模拟后序时机。</br>
+&emsp;1. 如果当前指针非空，进栈、左移，模拟左递归；</br>
+&emsp;2. 如果当前指针为空，记录上一个访问的结点 <font face="Consolas"><em>last</em></font>，判断其是否为栈顶结点的右孩子：如果不是，说明栈顶结点的右子树尚未被访问，当前指针设为右孩子并重复 1；如果是，说明右子树访问完成，退栈、模拟后序时机，并继续重复判断下一个栈顶结点。
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -646,7 +649,7 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-&emsp;更具体的说，当一个结点的左递归模拟结束后，判断它的右子树是否被访问过；如果是，把它记录下来，出栈，再去对它的父结点做一样的判断；如果未访问，则向右递归，回到左递归模拟的迭代过程。第二个迭代的判断条件阻止了根结点出栈后数组越界。</p>
+&emsp;第二个迭代需要判断栈非空。</p>
 <p><strong>③ 层序遍历</strong></br>
 &emsp;使用队列，同 <font face="Roboto">BFS</font>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
