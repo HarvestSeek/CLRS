@@ -544,6 +544,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.4/" title="4.Red-Black trees" class="md-nav__link">
+      4.Red-Black trees
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -781,7 +793,7 @@ $O(h)$</p>
         <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// NULL: no pred</span>
 <span class="p">}</span> 
 
 <span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
@@ -848,8 +860,8 @@ $O(h)$</p>
 <li>如果 <font face="Consolas"><em>z</em></font> 没有左孩子，那么用它的右孩子替换它。</li>
 <li>如果 <font face="Consolas"><em>z</em></font> 有左孩子且只有一个孩子，用左孩子替换它。</li>
 <li>如果 <font face="Consolas"><em>z</em></font> 有两个孩子，需要将 <font face="Consolas"><em>y</em></font> 移出并拼接：<ul>
-<li>如果 <font face="Consolas"><em>y</em></font> 是 <font face="Consolas"><em>z</em></font> 的右孩子，用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>。</li>
-<li>否则，先用 <font face="Consolas"><em>y</em></font> 的右孩子替换 <font face="Consolas"><em>y</em></font>，然后再用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>。</li>
+<li>如果 <font face="Consolas"><em>y</em></font> 是 <font face="Consolas"><em>z</em></font> 的右孩子，用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>（并把 <font face="Consolas"><em>z</em></font> 的左子树转接到 <font face="Consolas"><em>y</em></font> 上）。</li>
+<li>否则，先用 <font face="Consolas"><em>y</em></font> 的右孩子替换 <font face="Consolas"><em>y</em></font>，然后再用 <font face="Consolas"><em>y</em></font> 替换 <font face="Consolas"><em>z</em></font>（并把 <font face="Consolas"><em>z</em></font> 的左右子树都转接到 <font face="Consolas"><em>y</em></font> 上）。</li>
 </ul>
 </li>
 </ul>
@@ -951,6 +963,20 @@ $O(h)$</p>
             </div>
           </a>
         
+        
+          <a href="../3.4/" title="4.Red-Black trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                4.Red-Black trees
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>

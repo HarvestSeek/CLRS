@@ -40,7 +40,7 @@
 
     
       
-        <title>2.Hash tables - Learning Notes of Algorithm</title>
+        <title>4.Red-Black trees - Learning Notes of Algorithm</title>
       
     
     
@@ -142,7 +142,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                2.Hash tables
+                4.Red-Black trees
               
             </span>
           
@@ -422,99 +422,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        2.Hash tables
-      </label>
-    
-    <a href="./" title="2.Hash tables" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../3.2/" title="2.Hash tables" class="md-nav__link">
       2.Hash tables
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" title="1. 散列表概述" class="md-nav__link">
-    1. 散列表概述
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" title="2. 冲突" class="md-nav__link">
-    2. 冲突
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-chaining" title="(1). 链接法 (chaining)" class="md-nav__link">
-    (1). 链接法 (chaining)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" title="3. 散列函数" class="md-nav__link">
-    3. 散列函数
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-the-division-method" title="(1). 除法散列法 (the division method)" class="md-nav__link">
-    (1). 除法散列法 (the division method)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-the-multiplication-method" title="(2). 乘法散列法 (the multiplication method)" class="md-nav__link">
-    (2). 乘法散列法 (the multiplication method)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-universal-hashing" title="(3). 全域散列 (universal hashing)" class="md-nav__link">
-    (3). 全域散列 (universal hashing)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -534,11 +446,85 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../3.4/" title="4.Red-Black trees" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        4.Red-Black trees
+      </label>
+    
+    <a href="./" title="4.Red-Black trees" class="md-nav__link md-nav__link--active">
       4.Red-Black trees
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 红黑树及其性质" class="md-nav__link">
+    1. 红黑树及其性质
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 定义" class="md-nav__link">
+    (1). 定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 其他性质" class="md-nav__link">
+    (2). 其他性质
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" title="2. 红黑树的操作" class="md-nav__link">
+    2. 红黑树的操作
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rotation" title="(1). ROTATION" class="md-nav__link">
+    (1). ROTATION
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -566,23 +552,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 散列表概述" class="md-nav__link">
-    1. 散列表概述
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" title="2. 冲突" class="md-nav__link">
-    2. 冲突
+  <a href="#1" title="1. 红黑树及其性质" class="md-nav__link">
+    1. 红黑树及其性质
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-chaining" title="(1). 链接法 (chaining)" class="md-nav__link">
-    (1). 链接法 (chaining)
+  <a href="#1_1" title="(1). 定义" class="md-nav__link">
+    (1). 定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 其他性质" class="md-nav__link">
+    (2). 其他性质
   </a>
   
 </li>
@@ -593,30 +579,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" title="3. 散列函数" class="md-nav__link">
-    3. 散列函数
+  <a href="#2_1" title="2. 红黑树的操作" class="md-nav__link">
+    2. 红黑树的操作
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-the-division-method" title="(1). 除法散列法 (the division method)" class="md-nav__link">
-    (1). 除法散列法 (the division method)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-the-multiplication-method" title="(2). 乘法散列法 (the multiplication method)" class="md-nav__link">
-    (2). 乘法散列法 (the multiplication method)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-universal-hashing" title="(3). 全域散列 (universal hashing)" class="md-nav__link">
-    (3). 全域散列 (universal hashing)
+  <a href="#1-rotation" title="(1). ROTATION" class="md-nav__link">
+    (1). ROTATION
   </a>
   
 </li>
@@ -643,82 +615,33 @@
               
                 
                 
-                  <h1>2.Hash tables</h1>
+                  <h1>4.Red-Black trees</h1>
                 
-                <p><font face="思源黑体 CN"></p>
-<h3 id="1">1. 散列表概述</h3>
-<p>&emsp;许多应用都需要一个动态集合，它至少支持 <font face="Consolas"><em>INSERT</em></font>、<font face="Consolas"><em>SEARCH</em></font> 和 <font face="Consolas"><em>DELETE</em></font> 等操作。</br>
-&emsp;记 $U=\lbrace 0,\ 1,\ ...,n-1\rbrace$ 为关键字全域(<font face="Consolas">universe of keys</font>)，假设动态集合需要的关键字都取于此，且没有两个元素的关键字相同。</br>
-&emsp;这个动态集合可以用数组表示，或称其为直接寻址表(<font face="Consolas">direct-address table</font>)，记为 $T[0..n-1]$，其中的每个位置称为槽(<font face="Consolas">slot</font>)，槽 $T[k]$ 指向 $U$ 中关键字为 $k$ 的元素。</br>
-&emsp;直接寻址表的缺点十分明显：如果 $|U|$ 很大，则可能需要不切实际的内存；如果 $|K|$ 相对于 $|U|$ 很小，则会浪费很多空间。在散列表方式下，通过散列函数 (<font face="Consolas">hash function</font>) $h$ 和关键字 $k$ 计算出槽的位置 $h(k)$。其中 $h: U→\lbrace0,\ 1,...,m-1 \rbrace$。</br>
-&emsp;但是，两个关键字可能被映射到同一个槽中，这种情形被称之为冲突 (<font face="Consolas">collision</font>)，想要完全避免冲突是不可能的。一方面，可以通过好的散列函数 $h$ 尽可能避免冲突；另一方面，通过有效的方法解决冲突。</p>
-<h3 id="2">2. 冲突</h3>
-<h4 id="1-chaining">(1). 链接法 (<font face="Consolas">chaining</font>)</h4>
-<p>&emsp;把散列到同一个槽的元素都放在一个链表中。插入的时间代价为 $O(1)$，需要避免重复元素则需要额外的开销；如果使用双向链表，删除操作也为 $O(1)$，输入参数为关键字对应的结点指针。</br>
-&emsp;给定一个能存放 $n$ 个元素的、具有 $m$ 个槽位的散列表 $T$，定义 $T$ 的装载因子 (<font face="Consolas">load factor</font>) 为 $\alpha=n/m$，即一个链的平均存储元素数。设 $T[i]$ 的长度为 $n_i$，则有 $n=n_0+n_1+...+n_{m-1}$，$E[n_i]=\alpha=n/m$。假定 $h(k)$ 的计算时间为 $O(1)$，下面分析链接法的性能。</p>
-<p><font face="汉仪全唐诗简"><font color=blue><strong>定理</strong></font>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>不成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
-&emsp;当查找关键字 $k$ 时，在不成功查找的前提下，相当于找至链表 $T[h(k)]$ 末尾的期望时间，且 $E[n_{h(k)}]=\alpha$。于是，需要的总时间为 $\Theta (1+\alpha)$。</p>
-<p><font face="汉仪全唐诗简"><font color=blue><strong>定理</strong></font>：在简单均匀散列的假设下，对于用链接法解决冲突的散列表，一次<u>成功</u>查找的平均时间为 $\Theta (1+\alpha)$。</font></br>
-&emsp;假定要查找的关键字是 $n$ 个元素中的任何一个，且是等可能的。在对 $x$ 的一次成功查找中，查找的元素数是排列在 $x$ 前的元素数加一，且出现在 $x$ 前的元素均是在 $x$ 之后插入的元素。</br>
-&emsp;基于此，设 $x_i$ 为第 $i$ 个插入表中的元素，且 $k_i=x_i.key$，令$$X_{ij}=
-\begin{cases}
-1&amp; if\ h(k_i)=h(k_j)\\
-0&amp; else
-\end{cases}$$
-$P(\lbrace h(k_i)=h(k_j)\rbrace)=1/m$，于是有 $E[X_{ij}]=1/m$。由于查找每个元素都是等可能的，求出所有元素的查找数之和再除以 $n$，以此为统计量对其求期望。
-$$
-\begin{aligned}
-E[\frac{1}{n}\sum_{i=1}^{n}(1+\sum_{j=i+1}^{n}X_{ij})]&amp;=\frac{1}{n}\sum_{i=1}^{n}(1+\sum_{j=i+1}^{n}E[X_{ij}])\\
-&amp;=1+\frac{1}{nm}(n^2-\frac{n(n+1)}{2})\\
-&amp;=1+\frac{\alpha}{2}-\frac{\alpha}{2n}
-\end{aligned}
-$$
-&emsp;因此，查找需要的时间为 $\Theta (2+\frac{\alpha}{2}-\frac{\alpha}{2n})=\Theta (1+\alpha)$。</br>
-&emsp;如果散列表的槽数与表中的元素数成正比，即 $n=O(m)$，则 $\alpha=O(1)$，这意味着查找需要 $O(1)$ 时间，也意味着包括插入、删除在内的全部字典操作在平均情况下都只需要 $O(1)$ 时间。</p>
-<h3 id="3">3. 散列函数</h3>
-<p>&emsp;一个好的散列函数应(近似)满足简单均匀散列 (<font face="Consolas">simple uniform hashing</font>) 假设：每个关键字都被等可能地散列到 $m$ 个槽位中的任何一个，并与其他关键字已散列到哪个槽位无关。</br>
-&emsp;假定关键字的全域为自然数集 $N$，如果所给关键字不是自然数如字符串，将其转化为相应基数的自然数(如 <font face="Consolas">ASCII-128</font>)。</p>
-<h4 id="1-the-division-method">(1). 除法散列法 (<font face="Consolas">the division method</font>)</h4>
-<p>&emsp;散列函数为：
-$$
-h(k)=k\ mod\ m
-$$
-&emsp;$m$ 应尽量避免为2的幂，如果 $m=2^p$，那么 $h(k)$ 就是 $k$ 的 $p$ 个最低位数字。除非已知低位的各种排列的出现是等可能的，在一般情况下，这样选取 $m$ 会提高散列冲突的概率。</br>
-&emsp;$m$ 也应当避免接近2的幂。考虑以下情境：假设 $m=2^p-1$，那么对于进制为 $2^p$ 的字符串，可以通过取余运算证明 $h(xyz...)=(h(x)+h(y)+h(z)+....)mod\ (2^p-1)$，即对此条件下的同一字符串的不同排列，它们的散列值是冲突的。</br>
-&emsp;在程序处理数据的过程中，往往具有一定的局部性，例如某个数按照一定的步长 $s$ 迭代增加。如果可以保证 $\gcd(s,m)=1$，即 $s$ 与 $m$ 互质，那么由取余的性质可知数据在按照 $s$ 变化的过程中会均匀分布在 $m$ 的每一个位置。由于 $s$ 是不确定的，我们令 $m$ 是一个较大的且不接近于2的幂的质数，就是一个比较好的选择。</p>
-<h4 id="2-the-multiplication-method">(2). 乘法散列法 (<font face="Consolas">the multiplication method</font>)</h4>
-<p>&emsp;散列函数为：
-$$
-h(k)=\lfloor m(kA\ mod\ 1) \rfloor
-$$
-&emsp;下面解释各个参数的含义。设 $w$ 为计算机的字长 (<font face="Consolas">word size</font>)，$A=s/2^w$ 且 $0&lt; A&lt; 1$，$k$ 和 $s$ 都正好可以用一个单字表示，即 $0&lt; k&lt; 2^w$、$0&lt; s&lt;2^w$ 是用 $w-1$ <font face="Consolas"><em>bit</em></font> 位表示的数。$m$ 一般为 $2$ 的某个幂次，令 $m=2^p$。则原式可转化为：
-$$
-h(k)=\lfloor 2^p(\frac{k\ ·s}{2^w}\ mod\ 1)\rfloor
-$$
-&emsp;整个映射过程可以理解为：$k$ 与 $s$ 的乘积结果的 $2w$ 位数右移 $w$ 位变成小数后，用取模运算保留小数位，再左移 $p$ 位后取整。整体相当于只保留 $k\ ·s$ 的后 $w$ 位的前 $p$ 位。</br>
-&emsp;此方法对任何 $A$ 值都适用，但对某些特定的 $A$ 效果更好，最佳选择与待散列的数据有关。<font face="Consolas"><em>Knuth</em></font> 认为 $A\approx (\sqrt{5}-1)/2=0.6180339887$ 是一个比较理想的值。</p>
-<h4 id="3-universal-hashing">(3). 全域散列 (<font face="Consolas">universal hashing</font>)</h4>
-<p>&emsp;对任一个散列函数，都存在最坏情况，使得所有关键字都被散列至同一个槽中。唯一有效的改进方法是随机选取散列函数，获得较好的平均时间，这种方法就是全域散列。</br>
-&emsp;设 $\mathcal{H}$ 为有限散列函数 ( $U\rightarrow \lbrace 0,...,m-1\rbrace$ ) 的集合，如果对每一对不同的关键字 $k,\ l\in U$，满足 $h(k)=h(l)$ 的函数 $h\in \mathcal{H}$ 的个数至多为 $|\mathcal{H}|/m$，那么函数组 $\mathcal{H}$ 是全域的。(<font face="Consolas">or:</font> 从中随机选取一个散列函数，对不同的 $k,\ l$，发生冲突的概率不大于 $1/m$).</br>
-&emsp;下面的结论说明了全域散列具有较好的平均性能。</p>
-<p><font face="汉仪全唐诗简">
-<font color=blue>
-<strong>定理</strong>：</font>设 $h\in \mathcal{H}$，将 $n$ 个关键字散列至大小为 $m$ 的表 $T$ 中，并使用链接法解决冲突。若 $k$ 不在表中，则 $k$ 被散列至其中链表的期望长度 $E[n_{h(k)}]$ 至多为 $\alpha$；若 $k$ 在表中，则包含 $k$ 的链表期望长度 $E[n_{h(k)}]$ 至多为 $1+\alpha$。
-</font></br></p>
-<p>[证] 对不同关键字 $k、l$，定义 $X_{kl}=I\lbrace h(k)=h(l) \rbrace$，由全域散列的定义，$P(\lbrace h(k)=h(l) \rbrace)\leq 1/m$，所以 $E[X_{kl}]\leq 1/m$。</br>
-&emsp;定义表示与 $k$ 散列至同一个槽的关键字的数量的随机变量：$$Y_k=\sum_{l\in T,l \ne k} E[X_{kl}]$$。于是，有 $$E[Y_k]\leq \sum_{l\in T,l \ne k} \frac{1}{m}$$。</br>
-&emsp;<font face="Consolas">(i). </font>如果 $k$ 不在表 $T$ 中，那么 $|\lbrace l\in T, l\ne k \rbrace |=n$，于是 $E[n_{h(k)}]=E[Y_k]\leq n/m$。</br>
-&emsp;<font face="Consolas">(ii). </font>如果 $k$ 在表 $T$ 中，那么$|\lbrace l\in T, l \ne k \rbrace |=n-1$，于是 $E[n_{h(k)}]=E[Y_k]+1\leq (n-1)/m+1&lt;1+\alpha$。</p>
-<p>&emsp;最后给出设计一个全域散列函数类的方法。</br>
-&emsp;首先，选取一个足够大的素数 $p$，使得对任意的关键字都有 $k\in [0, p-1]$ ($p&gt;m$) 。令 $Z_p=\lbrace 0,1,...,p-1\rbrace$，$Z_p^{\ast} =\lbrace 1,2,...,p-1\rbrace$。 </br>
-&emsp;然后，对任何 $a\in Z_p^{\ast}, b\in Z_p$，定义 $$h_{ab}(k)=((ak+b)\mod p)\mod m$$
-所有这样的函数构成的函数簇 $\mathcal{H}_{pm}=\lbrace h_{ab}:a\in Z_p^{\ast}, b\in Z_p\rbrace $ 是全域的。$\mathcal{H}$ 中共包含 $p(p-1)$ 个函数，每一个函数都将 $Z_p$ 映射到 $Z_m$，且它有一个良好的性质：$m$ 的选择是任意的，不一定是素数。</br></p>
-<p>&emsp;下面说明结论的正确性。</br>
-&emsp;考虑 $Z_p$ 中任两个不同的关键字 $k、l$，令 $r=(ak+b)\mod p$，$s=(al+b)\mod p$，于是有 $r-s\equiv a(k-l) \mod p$。因为 $a&lt; p$，$k-l&lt; p$，且 $p$ 是素数，那么 $r\ne s$，这样 $k$ 和 $l$ 首先被映射到不同的实数上。此外，数对 $(a,b)$ 有 $p(p-1)$ 中可能的选择，每一种选择都会解出不同的 $(r,s)(r\ne s)$(原因略)，因此 $(a,b)$ 与 $(r,s)$ 之间存在一个一一对应关系，所以 $k$ 和 $l$ 冲突的概率就等于 $r\equiv s(\mod m)$ 的概率。
-</br>
-&emsp;当选定一个 $r$，$s$ 就只能在剩下 $p-1$ 个数中选择，其中满足 $s\ne r$ 且 $s\equiv r(\mod m)$ 的值的个数至多为：$\lceil p/m \rceil-1\leq((p+m-1)/m)-1=(p-1)/m$。</br>
-&emsp;当进行最后一步模 $m$ 运算时，$s$ 与 $r$ 冲突的概率至多为 $((p-1)/m)/(p-1)=1/m$。</br>
-&emsp;因此，对任意不同的 $k,l\in Z_p$，有 $P(\lbrace h_{ab}(k)=h_{ab}(l) \rbrace)\leq 1/m$。</p>
+                <p><font face="思源黑体 CN">
+<font face="Consolas"></font></p>
+<h3 id="1">1. 红黑树及其性质</h3>
+<h4 id="1_1">(1). 定义</h4>
+<p>&emsp;一棵红黑树是满足下列<strong>红黑性质</strong> (<font face="Consolas">red-black properties</font>) 的二叉搜索树：</br>
+&emsp;1. 每个结点或为红色，或为黑色。</br>
+&emsp;2. 根结点是黑色的。</br>
+&emsp;3. 外部结点 <font face="Consolas"><em>NIL</em></font> 是黑色的。</br>
+&emsp;4. 如果一个结点是红色的，那么它的两个子结点是黑色的。</br>
+&emsp;5. 对每一个结点，从该结点都所有后代叶结点的简单路径上，均包含相同数目的黑色结点。</br>
+&emsp;空结点视为外部结点（叶结点），并且为了方便处理边界条件，所有的空结点都由哨兵结点 <font face="Consolas"><em>NIL</em></font> 代替。</br>
+&emsp;从某个结点 <font face="Consolas"><em>x</em></font> 出发（<u>不含该结点</u>），到达一个<u>外部结点</u>的任一简单路径上的黑色结点数称为该结点的<strong>黑高度</strong> (<font face="Consolas">black-height</font>)，记为 $bh(x)$。</br>
+&emsp;定义红黑树的黑高度为其根结点的黑高度。</p>
+<h4 id="2">(2). 其他性质</h4>
+<p>① 在一棵以 $x$ 为根的(子)树中，设内部结点数为 $n$，则 $2^{bh(x)}-1\leq n \leq 2^{2×bh(x)}-1$。</br>
+&emsp;- 最少：全是黑结点；最多：任一路径上红黑交替。</br>
+② 从根结点到外部结点的任一条简单路径上，至少有一半的结点为黑色。</br>
+&emsp;- 由红黑性质 4 可得。</br>
+③ 从某结点 $x$ 到其后代外部结点的所有简单路径中，最长的一条的长度至多是最短的一条的 2 倍。</br>
+&emsp;- 由 ② 和红黑性质 5 可得。</br>
+④ 一棵有 $n$ 个内部结点的红黑树高度至多为 $2$·$lg(n+1)$。</br>
+&emsp;- 设树高为 $h$，由 ②，黑高度至少为 $h/2$，则 $n \geq 2^{h/2}-1$。两边取对数得 $h\leq 2$·$lg(n+1)$。</p>
+<h3 id="2_1">2. 红黑树的操作</h3>
+<h4 id="1-rotation">(1). <font face="Consolas"><em>ROTATION</em></font></h4>
+<p><img src=""></p>
 <p></font></p>
                 
                   
@@ -740,7 +663,7 @@ $$
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../3.1/" title="1.Elementary data structures" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../3.3/" title="3.Binary search trees" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -749,25 +672,11 @@ $$
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                1.Elementary data structures
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../3.3/" title="3.Binary search trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
                 3.Binary search trees
               </span>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           </a>
+        
         
       </nav>
     </div>
