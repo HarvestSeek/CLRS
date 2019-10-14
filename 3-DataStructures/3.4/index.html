@@ -630,6 +630,32 @@
 &emsp;空结点视为外部结点（叶结点），并且为了方便处理边界条件，所有的空结点都由哨兵结点 <font face="Consolas"><em>NIL</em></font> 代替。</br>
 &emsp;从某个结点 <font face="Consolas"><em>x</em></font> 出发（<u>不含该结点</u>），到达一个<u>外部结点</u>的任一简单路径上的黑色结点数称为该结点的<strong>黑高度</strong> (<font face="Consolas">black-height</font>)，记为 $bh(x)$。</br>
 &emsp;定义红黑树的黑高度为其根结点的黑高度。</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">key</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">parent</span><span class="p">;</span>
+    <span class="n">Color</span> <span class="n">color</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Node</span><span class="p">;</span> 
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">tree</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">nil</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">RBTree</span><span class="p">;</span>
+</pre></div>
+</td></tr></table>
+
 <h4 id="2">(2). 其他性质</h4>
 <p>① 在一棵以 $x$ 为根的(子)树中，设内部结点数为 $n$，则 $2^{bh(x)}-1\leq n \leq 2^{2×bh(x)}-1$。</br>
 &emsp;- 最少：全是黑结点；最多：任一路径上红黑交替。</br>
@@ -641,8 +667,88 @@
 &emsp;- 设树高为 $h$，由 ②，黑高度至少为 $h/2$，则 $n \geq 2^{h/2}-1$。两边取对数得 $h\leq 2$·$lg(n+1)$。</p>
 <h3 id="2_1">2. 红黑树的操作</h3>
 <h4 id="1-rotation">(1). <font face="Consolas"><em>ROTATION</em></font></h4>
-<p><img src=""></p>
-<p></font></p>
+<p>&emsp;红黑树的插入和删除操作可能会影响到树的红黑性质，此时通过修改结点颜色和修改树的指针结构维护这些性质，而修改指针结构通过旋转完成。
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/RbtreeRotation.PNG?raw=true" width=400></div>
+</br>
+<font face="Consolas"><em>LEFT-ROTATE</em></font>: 假设 <font face="Consolas"><em>x.right</em></font> 不为空。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">LeftRotate</span><span class="p">(</span><span class="n">RBTree</span><span class="o">*</span> <span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="c1">// step 1. turn y&#39;s left subtree</span>
+    <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>  
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// step 2. link x&#39;s parent to y</span>
+    <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// step 3. link x and y</span>
+    <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+<font face="Consolas"><em>RIGHT-ROTATE</em></font>: 和左旋对称。
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">RightRotate</span><span class="p">(</span><span class="n">RBTree</span><span class="o">*</span> <span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span> 
+    <span class="p">}</span>
+    <span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+    <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+</font></p>
                 
                   
                 
