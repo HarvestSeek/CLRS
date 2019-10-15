@@ -831,9 +831,11 @@ $O(h)$</p>
 17
 18
 19
-20</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">iNode</span><span class="p">)</span> <span class="p">{</span>
+20
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">iNode</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">iNode</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">last</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">last</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">key</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">)</span>  <span class="p">{</span>

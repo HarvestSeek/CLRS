@@ -512,6 +512,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#2-insert" title="(2). INSERT" class="md-nav__link">
+    (2). INSERT
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -589,6 +596,13 @@
           <li class="md-nav__item">
   <a href="#1-rotation" title="(1). ROTATION" class="md-nav__link">
     (1). ROTATION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-insert" title="(2). INSERT" class="md-nav__link">
+    (2). INSERT
   </a>
   
 </li>
@@ -747,8 +761,16 @@
     <span class="n">x</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-</td></tr></table>
-</font></p>
+</td></tr></table></p>
+<h4 id="2-insert">(2). <font face="Consolas"><em>INSERT</em></font></h4>
+<p>&emsp;调用一般的 <font face="Consolas">BST</font> 的插入过程插入结点 <font face="Consolas"><em>z</em></font>，为保持树结构的合理性，令 <font face="Consolas"><em>z</em></font> 的左右孩子指向 <font face="Consolas"><em>nil</em></font>，并置其为红色。这步操作可能导致红黑性质 2 和 4 其中的一个被破坏，下面分三种情况（在程序中为六种）讨论如何调整树结构。</br></br>
+① <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为红色</br>
+&emsp;此时 <font face="Consolas"><em>z</em>、<em>z.parent</em>、<em>u</em></font> 为红色，<font face="Consolas"><em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em>、<em>u</em></font> 着为黑色，把 <font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后令 <font face="Consolas"><em>z</em></font> <font face="Consolas"><em>=</em></font> <font face="Consolas"><em>z.parent.parent</em></font>，重复调整树结构的迭代过程。</br></br>
+② <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，<font face="Consolas"><em>z</em>、<em>z.parent</em>、<em>z.parent.parent</em></font> 共线</br>
+&emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em>、<em>z.parent</em></font> 为红色，<font face="Consolas"><em>u</em>、<em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em></font> 着为黑色，<font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后调用一次右旋 <font face="Consolas"><em>RIGHT-ROTATE(T, z.p.p)</em></font>，保持了红黑树性质。</br></br>
+③ <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，且不共线</br>
+&emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em></font> 是 <font face="Consolas"><em>z.parent</em></font> 的右孩子。令 <font face="Consolas"><em>z</em></font> 上移到 <font face="Consolas"><em>z.parent</font>，然后对 <font face="Consolas">_z</em></font> 调用左旋操作，无需修改任意结点的颜色，然后按情况 ② 处理。</p>
+<p></font></p>
                 
                   
                 
