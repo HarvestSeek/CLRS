@@ -682,7 +682,7 @@
 <h3 id="2_1">2. 红黑树的操作</h3>
 <h4 id="1-rotation">(1). <font face="Consolas"><em>ROTATION</em></font></h4>
 <p>&emsp;红黑树的插入和删除操作可能会影响到树的红黑性质，此时通过修改结点颜色和修改树的指针结构维护这些性质，而修改指针结构通过旋转完成。
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/RbtreeRotation.PNG?raw=true" width=400></div>
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/2.4/RbtreeRotation.PNG?raw=true" width=400></div>
 </br>
 <font face="Consolas"><em>LEFT-ROTATE</em></font>: 假设 <font face="Consolas"><em>x.right</em></font> 不为空。
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -770,6 +770,128 @@
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em>、<em>z.parent</em></font> 为红色，<font face="Consolas"><em>u</em>、<em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em></font> 着为黑色，<font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后调用一次右旋 <font face="Consolas"><em>RIGHT-ROTATE(T, z.p.p)</em></font>，保持了红黑树性质。</br></br>
 ③ <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，且不共线</br>
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em></font> 是 <font face="Consolas"><em>z.parent</em></font> 的右孩子。令 <font face="Consolas"><em>z</em></font> 上移到 <font face="Consolas"><em>z.parent</font>，然后对 <font face="Consolas">_z</em></font> 调用左旋操作，无需修改任意结点的颜色，然后按情况 ② 处理。</p>
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/2.4/insert23.png?raw=true"></div>
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">!=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">last</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">last</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">last</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">;</span>
+    <span class="n">z</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+    <span class="n">InsertFixup</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">InsertFixup</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Node</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span> 
+            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+                <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+            <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">Node</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+                <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+            <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
 <p></font></p>
                 
                   
