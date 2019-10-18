@@ -556,6 +556,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.5/" title="5.AVL trees" class="md-nav__link">
+      5.AVL trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.6/" title="6.Interval trees" class="md-nav__link">
+      6.Interval trees
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -678,8 +702,8 @@
 <h3 id="1">1. 二叉搜索树及其性质</h3>
 <h4 id="1_1">(1). 定义</h4>
 <p>&emsp;由一棵二叉树组织，每个结点包含属性 <font face="Consolas"><em>key、left、right、parent</em></font>；对任何结点 <font face="Consolas"><em>x</em></font>，其左子树的关键字不大于 <font face="Consolas"><em>x.key</em></font>，右子树的关键字不小于 <font face="Consolas"><em>x.key</em></font>。</br>
-&emsp;结点的前驱 (<font face="Consolas">predecessor</font>)、后继 (<font face="Consolas">successor</font>)：中序的前一个结点和后一个结点。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+&emsp;结点的前驱 (<font face="Consolas">predecessor</font>)、后继 (<font face="Consolas">successor</font>)：中序的前一个结点和后一个结点。</p>
+<details class="note"><summary>code: DEF</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -699,7 +723,9 @@
     <span class="n">Node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">BST</span><span class="p">;</span>
 </pre></div>
-</td></tr></table></p>
+</td></tr></table>
+
+</details>
 <h4 id="2">(2). 性质</h4>
 <p>① 满足二叉树的所有性质。</br>
 ② 在 <font face="Consolas">BST</font> 中，如果一个结点有两个孩子，那么它的前驱没有右孩子，后继没有左孩子。</br>
@@ -708,7 +734,7 @@
 &emsp;- 首先，<font face="Consolas"><em>y</em></font> 一定是 <font face="Consolas"><em>x</em></font> 的祖先；然后，<font face="Consolas"><em>y.left</em></font> 也一定是 <font face="Consolas"><em>x</em></font> 的祖先，否则 <font face="Consolas"><em>x</em></font> 会出现在 <font face="Consolas"><em>y</em></font> 的右子树中；最后，假设 <font face="Consolas"><em>y</em></font> 不是最低的，那么最低的那个一定出现在 <font face="Consolas"><em>y</em></font> 的左子树中。</p>
 <h3 id="2_1">2. 二叉搜索树的操作</h3>
 <h4 id="1-search">(1).  <font face="Consolas"><em>SEARCH</em></font></h4>
-<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<details class="note"><summary>code: SEARCH</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -729,10 +755,12 @@
 <span class="p">}</span> 
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
+
+</details>
+<p>$O(h)$</p>
 <h4 id="2-minimummaximum">(2). <font face="Consolas"><em>MINIMUM、MAXIMUM</em></font></h4>
-<p>最左即最小，最右即最大。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p>最左即最小，最右即最大。</p>
+<details class="note"><summary>code: Minimum、Maximum</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -759,10 +787,12 @@ $O(h)$</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
+
+</details>
+<p>$O(h)$</p>
 <h4 id="3-predecessorsuccessor">(3). <font face="Consolas"><em>PREDECESSOR、SUCCESSOR</em></font></h4>
-<p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。</p>
+<details class="note"><summary>code: PREDECESSOR、SUCCESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -809,10 +839,12 @@ $O(h)$</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
+
+</details>
+<p>$O(h)$</p>
 <h4 id="4-insert">(4). <font face="Consolas"><em>INSERT</em></font></h4>
-<p>对任一个关键字，<font face="Consolas">BST</font> 存在一个空位置对应它的插入位置。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p>对任一个关键字，<font face="Consolas">BST</font> 存在一个空位置对应它的插入位置。</p>
+<details class="note"><summary>code: INSERT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -855,7 +887,9 @@ $O(h)$</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
+
+</details>
+<p>$O(h)$</p>
 <h4 id="4-delete">(4). <font face="Consolas"><em>DELETE</em></font></h4>
 <p>&emsp;设要删除的结点为 <font face="Consolas"><em>z</em></font>，其后继为 <font face="Consolas"><em>y</em></font>。删除总体分为三种情况，特殊情况是当 <font face="Consolas"><em>z</em></font> 有两个孩子，这时选取它的后继 <font face="Consolas"><em>y</em></font> 替换它，因为 <font face="Consolas"><em>y</em></font> 一定没有左子树。更详细的过程为：</p>
 <ul>
@@ -867,8 +901,8 @@ $O(h)$</p>
 </ul>
 </li>
 </ul>
-<p>&emsp;提取一个子过程 <font face="Consolas"><em>TRANSPLANT</em></font>：用一棵子树替换另外一棵子树。
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+<p>&emsp;提取一个子过程 <font face="Consolas"><em>TRANSPLANT</em></font>：用一棵子树替换另外一棵子树。</p>
+<details class="note"><summary>code: DELETE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
  4
@@ -929,7 +963,9 @@ $O(h)$</p>
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
-$O(h)$</p>
+
+</details>
+<p>$O(h)$</p>
 <p></font></p>
                 
                   

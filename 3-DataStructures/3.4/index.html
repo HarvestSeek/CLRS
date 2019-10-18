@@ -542,6 +542,30 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.5/" title="5.AVL trees" class="md-nav__link">
+      5.AVL trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.6/" title="6.Interval trees" class="md-nav__link">
+      6.Interval trees
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -783,11 +807,11 @@
 </details>
 <h4 id="2-insert">(2). <font face="Consolas"><em>INSERT</em></font></h4>
 <p>&emsp;调用 <font face="Consolas">BST</font> 的插入过程插入结点 <font face="Consolas"><em>z</em></font>，为保持树结构的合理性，令 <font face="Consolas"><em>z</em></font> 的左右孩子指向 <font face="Consolas"><em>nil</em></font>，并置其为红色。这步操作可能导致红黑性质 2 和 4 其中的一个被破坏，下面分三种情况（在程序中为六种）讨论如何调整树结构。</br></br>
-① <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为红色</br>
+<strong>① <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为红色</strong></br>
 &emsp;此时 <font face="Consolas"><em>z</em>、<em>z.parent</em>、<em>u</em></font> 为红色，<font face="Consolas"><em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em>、<em>u</em></font> 着为黑色，把 <font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后令 <font face="Consolas"><em>z</em></font> <font face="Consolas"><em>=</em></font> <font face="Consolas"><em>z.parent.parent</em></font>，重复调整树结构的迭代过程。</br></br>
-② <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，<font face="Consolas"><em>z</em>、<em>z.parent</em>、<em>z.parent.parent</em></font> 共线</br>
+<strong>② <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，<font face="Consolas"><em>z</em>、<em>z.parent</em>、<em>z.parent.parent</em></font> 共线</strong></br>
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em>、<em>z.parent</em></font> 为红色，<font face="Consolas"><em>u</em>、<em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em></font> 着为黑色，<font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后调用一次右旋 <font face="Consolas"><em>RIGHT-ROTATE(T, z.p.p)</em></font>，保持了红黑树性质。</br></br>
-③ <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，且不共线</br>
+<strong>③ <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，且不共线</strong></br>
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em></font> 是 <font face="Consolas"><em>z.parent</em></font> 的右孩子。令 <font face="Consolas"><em>z</em></font> 上移到 <font face="Consolas"><em>z.parent</font>，然后对 <font face="Consolas">_z</em></font> 调用左旋操作，无需修改任意结点的颜色，然后按情况 ② 处理。</p>
 <div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/insert23.png?raw=true" width=450></div>
 
@@ -919,28 +943,226 @@
 <h4 id="3-delete">(3). <font face="Consolas"><em>DELETE</em></font></h4>
 <p>&emsp;类似于插入操作，先调用 <font face="Consolas">BST</font> 的删除过程，再分情况讨论如何调整树的结构。</br>
 &emsp;设要被删除的结点为 <font face="Consolas"><em>z</em></font>，设 <font face="Consolas"><em>y</em></font> 是因为删除或移动导致红黑性质被破坏的结点，设 <font face="Consolas"><em>x</em></font> 是替换 <font face="Consolas"><em>y</em></font> 的位置的新结点。对应于 <font face="Consolas">BST</font> 删除操作的三种情况，在前两种情况中，<font face="Consolas"><em>y</em></font> 即为 <font face="Consolas"><em>z</em></font>，<font face="Consolas"><em>x</em></font> 是替换它的左右子树结点或空结点；在第三种情况中，因为替换 <font face="Consolas"><em>z</em></font> 的结点会保持 <font face="Consolas"><em>z</em></font> 的颜色，所以 <font face="Consolas"><em>y</em></font> 是 <font face="Consolas"><em>z</em></font> 右子树的后继，<font face="Consolas"><em>x</em></font> 是 <font face="Consolas"><em>y</em></font> 的右孩子或空结点。</br>
-&emsp;最后，依据 <font face="Consolas"><em>y</em></font> 的颜色 <font face="Consolas"><em>y-original-color</em></font> 判断是否调整树的结构。如果是红色，那么 <font face="Consolas"><em>y</em></font> 不可能是根，且 <font face="Consolas"><em>x</em></font> 一定是黑色，所以任何红黑性质都不会被破坏；如果是黑色，可能会发生 </p>
+&emsp;最后，依据 <font face="Consolas"><em>y</em></font> 的颜色 <font face="Consolas"><em>y-original-color</em></font> 判断是否调整树的结构。如果是红色，那么 <font face="Consolas"><em>y</em></font> 不可能是根，且 <font face="Consolas"><em>x</em></font> 一定是黑色，所以任何红黑性质都不会被破坏；如果是黑色，(可能)会发生 </p>
 <ul>
-<li>如果 <font face="Consolas"><em>y</em></font> 是根，它的红孩子 <font face="Consolas"><em>x</em></font> 成为新根，则破坏了红黑性质 2；</li>
-<li>如果在 <font face="Consolas"><em>y</em></font> 被删除或移动后，<font face="Consolas"><em>x</em></font> 和 <font face="Consolas"><em>x.parent</em></font> 都是红色，则破坏了红黑性质 4；</li>
-<li>先前任何包含 <font face="Consolas"><em>y</em></font> 的简单路径上的黑色结点数都少一。</li>
+<li>(i). 如果 <font face="Consolas"><em>y</em></font> 是根，它的红孩子 <font face="Consolas"><em>x</em></font> 成为新根，则破坏了红黑性质 2；</li>
+<li>(ii). 如果在 <font face="Consolas"><em>y</em></font> 被删除或移动后，<font face="Consolas"><em>x</em></font> 和 <font face="Consolas"><em>x.parent</em></font> 都是红色，则破坏了红黑性质 4；</li>
+<li>(iii). 先前任何包含 <font face="Consolas"><em>y</em></font> 的简单路径上的黑色结点数都少一。</li>
 </ul>
 <p>解决的办法是，视 <font face="Consolas"><em>x</em></font> 的属性中有一重额外的黑色。如果 <font face="Consolas"><em>x</em></font> 是一个红黑色结点，即其本身为红色，则直接把它置黑；如果 <font face="Consolas"><em>x</em></font> 是一个双重黑色的结点，设 <font face="Consolas"><em>w</em></font> 是它的兄弟结点，然后分四种情况（程序中为八种）讨论如何处理。（以 <font face="Consolas"><em>x</em></font> <font face="Consolas">=</font> <font face="Consolas"><em>x.parent.left</em></font> 为例）</p>
-<p>① <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是红色的</br>
-&emsp;<font face="Consolas"><em>w</em></font> 的两个孩子是黑色的。先改变 <font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>x.parent</em></font> 的颜色，然后对 <font face="Consolas"><em>x.parent</em></font> 做左旋操作，<font face="Consolas"><em>w</em></font> 的左孩子成为 <font face="Consolas">new <em>w</em></font>。此时，<font face="Consolas"><em>x</em></font> 具有双重黑色，<font face="Consolas">new <em>w</em></font> 为黑色，进入情况 ②、③、④ 的讨论范围。</br> 
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete1.png?raw=true" width=450></div></br></p>
-<p>② <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的两个子结点都是黑色的</br>
-&emsp;<font face="Consolas"><em>x</em></font>、<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w</em></font> 的两个孩子均为黑色的。从 <font face="Consolas"><em>x</em></font> 和 <font face="Consolas"><em>w</em></font> 上去掉一重黑色，使得 <font face="Consolas"><em>x</em></font> 只剩一重黑色、<font face="Consolas"><em>w</em></font> 变为红色，并把这重黑色补偿到 <font face="Consolas"><em>x.p</em></font> 上，并令 <font face="Consolas"><em>x.p</em></font> <font face="Consolas">=</font> <font face="Consolas">new <em>x</em></font>，重复迭代过程。</br>
+<p><strong>① <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是红色的</strong></br>
+&emsp;<font face="Consolas"><em>w</em></font> 的两个孩子和 <font face="Consolas"><em>x.parent</em></font> 是黑色的。先改变 <font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>x.parent</em></font> 的颜色，然后对 <font face="Consolas"><em>x.parent</em></font> 做左旋操作，<font face="Consolas"><em>w</em></font> 的左孩子成为 <font face="Consolas">new <em>w</em></font>。此时，<font face="Consolas"><em>x</em></font> 具有双重黑色，<font face="Consolas">new <em>w</em></font> 为黑色，进入情况 ②、③、④ 的讨论范围。</br> 
+&emsp;对于子树 $\varepsilon$、$\xi$，交换颜色保证了红黑性质 5。</br>
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete1.png?raw=true" width=500></div></br>
+<strong>② <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的两个子结点都是黑色的</strong></br>
+&emsp;<font face="Consolas"><em>x</em></font>、<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w</em></font> 的两个孩子均为黑色的，<font face="Consolas"><em>x.parent</em></font> 颜色未知。从 <font face="Consolas"><em>x</em></font> 和 <font face="Consolas"><em>w</em></font> 上去掉一重黑色，使得 <font face="Consolas"><em>x</em></font> 只剩一重黑色、<font face="Consolas"><em>w</em></font> 变为红色，并把这重黑色补偿到 <font face="Consolas"><em>x.parent</em></font> 上，并令 <font face="Consolas"><em>x.parent</em></font> <font face="Consolas">=</font> <font face="Consolas">new <em>x</em></font>，重复迭代过程。</br>
 &emsp;如果情况 ② 是通过情况 ① 进入的，那么 <font face="Consolas">new <em>x</em></font> 为红黑色，在代码的最后部分直接置黑，完成树结构的调整。</br>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete2.png?raw=true" width=450></div></br></p>
-<p>③ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是黑色的，且 <font face="Consolas"><em>w</em></font> 的左孩子为红色，右孩子为黑色</br>
-&emsp;改变（交换）<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w.left</em></font> 的颜色，然后对 <font face="Consolas"><em>w</em></font> 做右旋操作。此时，<font face="Consolas">new <em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子是红色的，进入情况 ④ 处理。</br></p>
-<p>④ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子为红色</br>
-&emsp;改变 <font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w.right</em></font> 的颜色，并置 <font face="Consolas"><em>x.p</em></font> 为黑色，再对 <font face="Consolas"><em>x.p</em></font> 做左旋操作，去掉了 <font face="Consolas"><em>x</em></font> 上额外的一重黑色，并保持红黑性质不变。最后，令 <font face="Consolas">new <em>x</em></font> <font face="Consolas">=</font> <font face="Consolas"><em>T.root</em></font>。</p>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete34.png?raw=true" width=450></div>
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete2.png?raw=true" width=500></div></br>
+<strong>③ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是黑色的，且 <font face="Consolas"><em>w</em></font> 的左孩子为红色，右孩子为黑色</strong></br>
+&emsp;<font face="Consolas"><em>x.p</em></font> 颜色未知。改变（交换）<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w.left</em></font> 的颜色，然后对 <font face="Consolas"><em>w</em></font> 做右旋操作。此时，<font face="Consolas">new <em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子是红色的，进入情况 ④ 处理。</br></p>
+<p><strong>④ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子为红色</strong></br>
+&emsp;<font face="Consolas"><em>x.p</em></font> 颜色未知。因为 <font face="Consolas"><em>w</em></font> 会成为子树的新根，令 <font face="Consolas"><em>w.color</em></font> <font face="Consolas">=</font> <font face="Consolas"><em>x.p.color</em></font>，然后改变 <font face="Consolas"><em>w.right</em></font> 的颜色，并置 <font face="Consolas"><em>x.p</em></font> 为黑色，再对 <font face="Consolas"><em>x.p</em></font> 做左旋操作，去掉了 <font face="Consolas"><em>x</em></font> 上额外的一重黑色，并保持红黑性质不变。最后退出循环。</p>
+<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete34.png?raw=true" width=500></div>
 
 <p></br></p>
-<details class="note"><summary>code: DELETE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>
+<p>&emsp;在红黑性质被破坏的几种情形中，当 (ii). 发生，在过程 <font face="Consolas"><em>DELETE-FIXUP</em></font> 中循环外被调整；删除的四种情况中的变换主要是为了调整 (iii). 造成的红黑性质 5 被破坏，每种情况均保证了变换前后根结点到子树 $\alpha$ ~ $\xi$ 的黑结点数不变。</p>
+<details class="note"><summary>code: DELETE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">Color</span> <span class="n">yOrgColor</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span> 
+        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>      
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">y</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>  
+            <span class="c1">// if z-&gt;right links to y directly and y-&gt;right links </span>
+            <span class="c1">// to nil, let nil-&gt;parent links to y</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+            <span class="n">y</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+        <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
+        <span class="n">y</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">;</span>  <span class="c1">// shift color</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">yOrgColor</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">DeleteFixup</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>   
+</pre></div>
+</td></tr></table>
+
+</details>
+<details class="note"><summary>code: DELETE-FIXUP</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">DeleteFixup</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Node</span> <span class="o">*</span><span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span> <span class="o">&amp;&amp;</span> <span class="n">w</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">w</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                    <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                    <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+                    <span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">;</span>
+                <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">Node</span> <span class="o">*</span><span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span> <span class="o">&amp;&amp;</span> <span class="n">w</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">w</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">BLACK</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">w</span><span class="o">-&gt;</span><span class="n">right</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                    <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
+                    <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+                    <span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span><span class="p">;</span>
+                <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">w</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+                <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">x</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+</details>
+<details class="note"><summary>code: TRANSPLANT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">des</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">des</span> <span class="o">==</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// src may be T.nil</span>
+    <span class="n">src</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
@@ -980,6 +1202,20 @@
             </div>
           </a>
         
+        
+          <a href="../3.5/" title="5.AVL trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                5.AVL trees
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
