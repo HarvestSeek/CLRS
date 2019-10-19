@@ -760,86 +760,50 @@
 <p>$O(h)$</p>
 <h4 id="2-minimummaximum">(2). <font face="Consolas"><em>MINIMUM、MAXIMUM</em></font></h4>
 <p>最左即最小，最右即最大。</p>
-<details class="note"><summary>code: Minimum、Maximum</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Minimum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">}</span> 
-
-<span class="n">Node</span><span class="o">*</span> <span class="nf">Maximum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
+<details class="note"><summary>code: MINIMUM</summary><p>```C
+Node<em> Minimum(Node </em>r) {
+    while (r-&gt;left != NULL) {
+        r = r-&gt;left;
+    }
+    return r;
+}</p>
+</details>
+<details class="note"><summary>code: MAXIMUM</summary><p>Node<em> Maximum(Node </em>r) {
+    while (r-&gt;right != NULL) {
+        r = r-&gt;right;
+    }
+    return r;
+}
+```</p>
 </details>
 <p>$O(h)$</p>
 <h4 id="3-predecessorsuccessor">(3). <font face="Consolas"><em>PREDECESSOR、SUCCESSOR</em></font></h4>
 <p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。</p>
-<details class="note"><summary>code: PREDECESSOR、SUCCESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Predecessor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">Maximum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// NULL: no pred</span>
-<span class="p">}</span> 
-
-<span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
-        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
+<details class="note"><summary>code: PREDECESSOR</summary><p>```C
+Node<em> Predecessor(Node </em>node) {
+    if (node-&gt;left != NULL) {
+        return Maximum(node-&gt;left);
+    }
+    Node *t = node-&gt;parent;
+    while(t != NULL &amp;&amp; t-&gt;left == node) {
+        node = t;
+        t = t-&gt;parent;
+    }
+    return t; // NULL: no pred
+} </p>
+</details>
+<details class="note"><summary>code: SUCCESSOR</summary><p>Node<em> Successor(Node </em>node) {
+    if(node-&gt;right != NULL) {
+        return Minimum(node-&gt;right);
+    }
+    Node *t = node-&gt;parent;
+    while(t != NULL &amp;&amp; t-&gt;right == node) {
+        node = t;
+        t = t-&gt;parent;
+    }
+    return t;
+}
+```</p>
 </details>
 <p>$O(h)$</p>
 <h4 id="4-insert">(4). <font face="Consolas"><em>INSERT</em></font></h4>
@@ -902,6 +866,33 @@
 </li>
 </ul>
 <p>&emsp;提取一个子过程 <font face="Consolas"><em>TRANSPLANT</em></font>：用一棵子树替换另外一棵子树。</p>
+<details class="note"><summary>code: TRANSPLANT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">des</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">src</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">src</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span> 
+</pre></div>
+</td></tr></table>
+
+</details>
 <details class="note"><summary>code: DELETE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -918,33 +909,7 @@
 14
 15
 16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">des</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">src</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">src</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span> 
-
-<span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>

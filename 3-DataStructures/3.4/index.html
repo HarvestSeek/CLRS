@@ -678,10 +678,10 @@
 &emsp;2. 根结点是黑色的。</br>
 &emsp;3. 外部结点 <font face="Consolas"><em>NIL</em></font> 是黑色的。</br>
 &emsp;4. 如果一个结点是红色的，那么它的两个子结点是黑色的。</br>
-&emsp;5. 对每一个结点，从该结点都所有后代叶结点的简单路径上，均包含相同数目的黑色结点。</br>
+&emsp;5. 对每一个结点，从该结点到所有后代叶结点的简单路径上，均包含相同数目的黑色结点。</br>
 &emsp;空结点视为外部结点（叶结点），并且为了方便处理边界条件，所有的空结点都由哨兵结点 <font face="Consolas"><em>NIL</em></font> 代替。</br>
 &emsp;从某个结点 <font face="Consolas"><em>x</em></font> 出发（<u>不含该结点</u>），到达一个<u>外部结点</u>的任一简单路径上的黑色结点数称为该结点的<strong>黑高度</strong> (<font face="Consolas">black-height</font>)，记为 $bh(x)$。</br>
-&emsp;定义红黑树的黑高度为其根结点的黑高度。</p>
+&emsp;一棵红黑树的黑高度为其根结点的黑高度。</p>
 <details class="note"><summary>code: DEF</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -717,7 +717,7 @@
 ③ 从某结点 $x$ 到其后代外部结点的所有简单路径中，最长的一条的长度至多是最短的一条的 2 倍。</br>
 &emsp;- 由 ② 和红黑性质 5 可得。</br>
 ④ 一棵有 $n$ 个内部结点的红黑树高度至多为 $2$·$lg(n+1)$。</br>
-&emsp;- 设树高为 $h$，由 ②，黑高度至少为 $h/2$，则 $n \geq 2^{h/2}-1$。两边取对数得 $h\leq 2$·$lg(n+1)$。</p>
+&emsp;- 设树高为 $h$，由 ②，黑高度至少为 $h/2$，则有 $n \geq 2^{h/2}-1$。两边取对数得 $h\leq 2$·$lg(n+1)$。</p>
 <h3 id="2_1">2. 红黑树的操作</h3>
 <h4 id="1-rotation">(1). <font face="Consolas"><em>ROTATION</em></font></h4>
 <p>&emsp;红黑树的插入和删除操作可能会影响到树的红黑性质，此时通过修改结点颜色和修改树的指针结构维护这些性质，而修改指针结构通过旋转完成。
@@ -817,126 +817,67 @@
 
 <p></br>
 &emsp;最后，修改根结点的颜色，确保红黑性质 2 不被破坏。</p>
-<details class="note"><summary>code: INSERT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">root</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
-    <span class="n">Node</span> <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">root</span> <span class="o">!=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">last</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">last</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">last</span> <span class="o">==</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">last</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">last</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">last</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">z</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">nil</span><span class="p">;</span>
-    <span class="n">z</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
-    <span class="n">InsertFixup</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">InsertFixup</span><span class="p">(</span><span class="n">RBTree</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Node</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span> 
-            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
-                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-                <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
-            <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="n">Node</span> <span class="o">*</span><span class="n">uncle</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">==</span> <span class="n">RED</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-                <span class="n">uncle</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-                <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
-                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span> <span class="o">==</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
-                <span class="n">RightRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">);</span>
-            <span class="p">}</span>
-            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-            <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">RED</span><span class="p">;</span>
-            <span class="n">LeftRotate</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</td></tr></table>
-
+<details class="note"><summary>code: INSERT</summary><p>```C
+void Insert(RBTree <em>tree, Node </em>z) {
+    Node <em>root = tree-&gt;root;
+    Node </em>last = tree-&gt;nil;
+    int key = z-&gt;key;
+    while (root != tree-&gt;nil) {
+        last = root;
+        if (root-&gt;key &gt; key) {
+            root = root-&gt;left;
+        } else {
+            root = root-&gt;right;
+        }
+    }
+    z-&gt;parent = last;
+    if (last == tree-&gt;nil) {
+        tree-&gt;root = z;
+    } else if (last-&gt;key &gt; key) {
+        last-&gt;left = z;
+    } else {
+        last-&gt;right = z;
+    }
+    z-&gt;left = z-&gt;right = tree-&gt;nil;
+    z-&gt;color = RED;
+    InsertFixup(tree, z);
+}</p>
+</details>
+<details class="note"><summary>code: INSERT-FIXUP</summary><p>void InsertFixup(RBTree <em>tree, Node </em>z) {
+    while (z-&gt;parent-&gt;color == RED) {
+        if (z-&gt;parent == z-&gt;parent-&gt;parent-&gt;left) {
+            Node <em>uncle = z-&gt;parent-&gt;parent-&gt;right; 
+            if (uncle-&gt;color == RED) {
+                z-&gt;parent-&gt;color = BLACK;
+                uncle-&gt;color = BLACK;
+                z-&gt;parent-&gt;parent-&gt;color = RED;
+                z = z-&gt;parent-&gt;parent;
+            } else if (z == z-&gt;parent-&gt;right) {
+                z = z-&gt;parent;
+                LeftRotate(tree, z);
+            }
+            z-&gt;parent-&gt;color = BLACK;
+            z-&gt;parent-&gt;parent-&gt;color = RED;
+            RightRotate(tree, z-&gt;parent-&gt;parent);
+        } else {
+            Node </em>uncle = z-&gt;parent-&gt;parent-&gt;left;
+            if (uncle-&gt;color == RED) {
+                z-&gt;parent-&gt;color = BLACK;
+                uncle-&gt;color = BLACK;
+                z-&gt;parent-&gt;parent-&gt;color = RED;
+                z = z-&gt;parent-&gt;parent;
+            } else if (z == z-&gt;parent-&gt;left) {
+                z = z-&gt;parent;
+                RightRotate(tree, z);
+            }
+            z-&gt;parent-&gt;color = BLACK;
+            z-&gt;parent-&gt;parent-&gt;color = RED;
+            LeftRotate(tree, z-&gt;parent-&gt;parent);
+        }
+    }
+    tree-&gt;root-&gt;color = BLACK;
+}
+```</p>
 </details>
 <p>&emsp;因为树高 $O(lgn)$，所以过程 <font face="Consolas"><em>INSERT</em></font> 插入元素的部分需要 $O(lgn)$ 时间；在过程 <font face="Consolas"><em>INSERT-FIXUP</em></font> 中，当且仅当情况 ① 发生，<font face="Consolas">while</font> 循环才会重复进行，可能执行的总次数为 $O(lgn)$；因此，总共需要时间为 $O(lgn)$。</br>
 &emsp;此外，该程序所做的旋转次数不会超过 2。</p>
