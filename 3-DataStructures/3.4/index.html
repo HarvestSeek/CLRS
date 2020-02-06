@@ -721,7 +721,7 @@
 <h3 id="2_1">2. 红黑树的操作</h3>
 <h4 id="1-rotation">(1). <font face="Consolas"><em>ROTATION</em></font></h4>
 <p>&emsp;红黑树的插入和删除操作可能会影响到树的红黑性质，此时通过修改结点颜色和修改树的指针结构维护这些性质，而修改指针结构通过旋转完成。
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/RbtreeRotation.PNG?raw=true" width=400></div>
+<div align=center><img src="../../img/3-DataStructure/3.4/RbtreeRotation.PNG" width=400></div>
 </br>
 <font face="Consolas"><em>LEFT-ROTATE</em></font>: 假设 <font face="Consolas"><em>x.right</em></font> 不为空。</p>
 <details class="note"><summary>code: LEFT-ROTATE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -813,7 +813,7 @@
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em>、<em>z.parent</em></font> 为红色，<font face="Consolas"><em>u</em>、<em>z.parent.parent</em></font> 为黑色。把 <font face="Consolas"><em>z.parent</em></font> 着为黑色，<font face="Consolas"><em>z.parent.parent</em></font> 着为红色，然后调用一次右旋 <font face="Consolas"><em>RIGHT-ROTATE(T, z.p.p)</em></font>，保持了红黑树性质。</br></br>
 <strong>③ <font face="Consolas"><em>z</em></font> 的叔结点 <font face="Consolas"><em>u</em></font> 为黑色，且不共线</strong></br>
 &emsp;以 <font face="Consolas"><em>z.parent</em></font> 是左孩子为例，此时 <font face="Consolas"><em>z</em></font> 是 <font face="Consolas"><em>z.parent</em></font> 的右孩子。令 <font face="Consolas"><em>z</em></font> 上移到 <font face="Consolas"><em>z.parent</font>，然后对 <font face="Consolas">_z</em></font> 调用左旋操作，无需修改任意结点的颜色，然后按情况 ② 处理。</p>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/insert23.png?raw=true" width=450></div>
+<div align=center><img src="../../img/3-DataStructure/3.4/insert23.png" width=450></div>
 
 <p></br>
 &emsp;最后，修改根结点的颜色，确保红黑性质 2 不被破坏。</p>
@@ -894,16 +894,16 @@ void Insert(RBTree <em>tree, Node </em>z) {
 <p><strong>① <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是红色的</strong></br>
 &emsp;<font face="Consolas"><em>w</em></font> 的两个孩子和 <font face="Consolas"><em>x.parent</em></font> 是黑色的。先改变 <font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>x.parent</em></font> 的颜色，然后对 <font face="Consolas"><em>x.parent</em></font> 做左旋操作，<font face="Consolas"><em>w</em></font> 的左孩子成为 <font face="Consolas">new <em>w</em></font>。此时，<font face="Consolas"><em>x</em></font> 具有双重黑色，<font face="Consolas">new <em>w</em></font> 为黑色，进入情况 ②、③、④ 的讨论范围。</br> 
 &emsp;对于子树 $\varepsilon$、$\xi$，交换颜色保证了红黑性质 5。</br>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete1.png?raw=true" width=500></div></br>
+<div align=center><img src="../../img/3-DataStructure/3.4/delete1.png" width=500></div></br>
 <strong>② <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的两个子结点都是黑色的</strong></br>
 &emsp;<font face="Consolas"><em>x</em></font>、<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w</em></font> 的两个孩子均为黑色的，<font face="Consolas"><em>x.parent</em></font> 颜色未知。从 <font face="Consolas"><em>x</em></font> 和 <font face="Consolas"><em>w</em></font> 上去掉一重黑色，使得 <font face="Consolas"><em>x</em></font> 只剩一重黑色、<font face="Consolas"><em>w</em></font> 变为红色，并把这重黑色补偿到 <font face="Consolas"><em>x.parent</em></font> 上，并令 <font face="Consolas"><em>x.parent</em></font> <font face="Consolas">=</font> <font face="Consolas">new <em>x</em></font>，重复迭代过程。</br>
 &emsp;如果情况 ② 是通过情况 ① 进入的，那么 <font face="Consolas">new <em>x</em></font> 为红黑色，在代码的最后部分直接置黑，完成树结构的调整。</br>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete2.png?raw=true" width=500></div></br>
+<div align=center><img src="../../img/3-DataStructure/3.4/delete2.png" width=500></div></br>
 <strong>③ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 是黑色的，且 <font face="Consolas"><em>w</em></font> 的左孩子为红色，右孩子为黑色</strong></br>
 &emsp;<font face="Consolas"><em>x.p</em></font> 颜色未知。改变（交换）<font face="Consolas"><em>w</em></font> 和 <font face="Consolas"><em>w.left</em></font> 的颜色，然后对 <font face="Consolas"><em>w</em></font> 做右旋操作。此时，<font face="Consolas">new <em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子是红色的，进入情况 ④ 处理。</br></p>
 <p><strong>④ <font face="Consolas"><em>x</em></font> 的兄弟结点 <font face="Consolas"><em>w</em></font> 为黑色，且 <font face="Consolas"><em>w</em></font> 的右孩子为红色</strong></br>
 &emsp;<font face="Consolas"><em>x.p</em></font> 颜色未知。因为 <font face="Consolas"><em>w</em></font> 会成为子树的新根，令 <font face="Consolas"><em>w.color</em></font> <font face="Consolas">=</font> <font face="Consolas"><em>x.p.color</em></font>，然后改变 <font face="Consolas"><em>w.right</em></font> 的颜色，并置 <font face="Consolas"><em>x.p</em></font> 为黑色，再对 <font face="Consolas"><em>x.p</em></font> 做左旋操作，去掉了 <font face="Consolas"><em>x</em></font> 上额外的一重黑色，并保持红黑性质不变。最后退出循环。</p>
-<div align=center><img src="https://github.com/HarvestSeek/CLRS/blob/gh-pages/img/3-DataStructure/3.4/delete34.png?raw=true" width=500></div>
+<div align=center><img src="..\..\img\3-DataStructure\3.4\delete34.png" width=500></div>
 
 <p></br></p>
 <p>&emsp;在红黑性质被破坏的几种情形中，当 (ii). 发生，在过程 <font face="Consolas"><em>DELETE-FIXUP</em></font> 中循环外被调整；删除的四种情况中的变换主要是为了调整 (iii). 造成的红黑性质 5 被破坏，每种情况均保证了变换前后根结点到子树 $\alpha$ ~ $\xi$ 的黑结点数不变。</p>
