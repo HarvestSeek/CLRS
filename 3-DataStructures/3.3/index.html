@@ -522,8 +522,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-delete" title="(4). DELETE" class="md-nav__link">
-    (4). DELETE
+  <a href="#5-delete" title="(5). DELETE" class="md-nav__link">
+    (5). DELETE
   </a>
   
 </li>
@@ -576,6 +576,18 @@
   <li class="md-nav__item">
     <a href="../3.6/" title="6.Interval trees" class="md-nav__link">
       6.Interval trees
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../3.7/" title="7.Segment trees" class="md-nav__link">
+      7.Segment trees
     </a>
   </li>
 
@@ -667,8 +679,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-delete" title="(4). DELETE" class="md-nav__link">
-    (4). DELETE
+  <a href="#5-delete" title="(5). DELETE" class="md-nav__link">
+    (5). DELETE
   </a>
   
 </li>
@@ -760,50 +772,88 @@
 <p>$O(h)$</p>
 <h4 id="2-minimummaximum">(2). <font face="Consolas"><em>MINIMUM、MAXIMUM</em></font></h4>
 <p>最左即最小，最右即最大。</p>
-<details class="note"><summary>code: MINIMUM</summary><p>```C
-Node<em> Minimum(Node </em>r) {
-    while (r-&gt;left != NULL) {
-        r = r-&gt;left;
-    }
-    return r;
-}</p>
+<details class="note"><summary>code: MINIMUM</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Minimum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
 </details>
-<details class="note"><summary>code: MAXIMUM</summary><p>Node<em> Maximum(Node </em>r) {
-    while (r-&gt;right != NULL) {
-        r = r-&gt;right;
-    }
-    return r;
-}
-```</p>
+<details class="note"><summary>code: MAXIMUM</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Maximum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
 </details>
 <p>$O(h)$</p>
 <h4 id="3-predecessorsuccessor">(3). <font face="Consolas"><em>PREDECESSOR、SUCCESSOR</em></font></h4>
 <p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。</p>
-<details class="note"><summary>code: PREDECESSOR</summary><p>```C
-Node<em> Predecessor(Node </em>node) {
-    if (node-&gt;left != NULL) {
-        return Maximum(node-&gt;left);
-    }
-    Node *t = node-&gt;parent;
-    while(t != NULL &amp;&amp; t-&gt;left == node) {
-        node = t;
-        t = t-&gt;parent;
-    }
-    return t; // NULL: no pred
-} </p>
+<details class="note"><summary>code: PREDECESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Predecessor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Maximum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// NULL: no pred</span>
+<span class="p">}</span> 
+</pre></div>
+</td></tr></table>
+
 </details>
-<details class="note"><summary>code: SUCCESSOR</summary><p>Node<em> Successor(Node </em>node) {
-    if(node-&gt;right != NULL) {
-        return Minimum(node-&gt;right);
-    }
-    Node *t = node-&gt;parent;
-    while(t != NULL &amp;&amp; t-&gt;right == node) {
-        node = t;
-        t = t-&gt;parent;
-    }
-    return t;
-}
-```</p>
+<details class="note"><summary>code: SUCCESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Node</span> <span class="o">*</span><span class="n">t</span> <span class="o">=</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">t</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
 </details>
 <p>$O(h)$</p>
 <h4 id="4-insert">(4). <font face="Consolas"><em>INSERT</em></font></h4>
@@ -854,7 +904,7 @@ Node<em> Predecessor(Node </em>node) {
 
 </details>
 <p>$O(h)$</p>
-<h4 id="4-delete">(4). <font face="Consolas"><em>DELETE</em></font></h4>
+<h4 id="5-delete">(5). <font face="Consolas"><em>DELETE</em></font></h4>
 <p>&emsp;设要删除的结点为 <font face="Consolas"><em>z</em></font>，其后继为 <font face="Consolas"><em>y</em></font>。删除总体分为三种情况，特殊情况是当 <font face="Consolas"><em>z</em></font> 有两个孩子，这时选取它的后继 <font face="Consolas"><em>y</em></font> 替换它，因为 <font face="Consolas"><em>y</em></font> 一定没有左子树。更详细的过程为：</p>
 <ul>
 <li>如果 <font face="Consolas"><em>z</em></font> 没有左孩子，那么用它的右孩子替换它。</li>
