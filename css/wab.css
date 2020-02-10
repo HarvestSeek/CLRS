@@ -1,0 +1,8 @@
+#times
+{ 
+	font-family:Times New Roman, "思源黑体 CN"; /* 英文字体写在前, 中英文分离 */
+	font-size: 109%;
+	float:left;
+}
+  
+.class1 {float:left}
