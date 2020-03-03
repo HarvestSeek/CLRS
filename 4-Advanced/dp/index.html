@@ -1,3 +1,4 @@
+<!-- Fix MathJax rendering on iOS Safari due to rendering long numbers as phone numbers. -->
 
 
 
@@ -6,6 +7,7 @@
 <html lang="en" class="no-js">
   <head>
     
+	
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -31,18 +33,20 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="/assets/favicon.png">
+      <link rel="shortcut icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
+	<meta name="format-detection" content="telephone=no">
+
     
       
-        <title>Learning Notes of Algorithm</title>
+        <title>1.Dynamic Programming - Learning Notes of Algorithm</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
       
-        <link rel="stylesheet" href="/assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
       
       
         
@@ -51,7 +55,7 @@
       
     
     
-      <script src="/assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
     
     
       
@@ -60,12 +64,12 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="/assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="/css/katex.css">
+      <link rel="stylesheet" href="../../css/katex.css">
     
-      <link rel="stylesheet" href="/css/wab.css">
+      <link rel="stylesheet" href="../../css/wab.css">
     
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
     
@@ -114,12 +118,16 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#1" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="/." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
+        <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
           
             <i class="md-icon">import_contacts</i>
           
@@ -136,7 +144,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                
+                1.Dynamic Programming
               
             </span>
           
@@ -182,7 +190,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -191,7 +201,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/." title="Basis" class="md-tabs__link">
+        <a href="../.." title="Basis" class="md-tabs__link md-tabs__link--active">
           Basis
         </a>
       
@@ -204,7 +214,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="/color/" title="Problem Sets" class="md-tabs__link">
+        <a href="../../color/" title="Problem Sets" class="md-tabs__link">
           Problem Sets
         </a>
       
@@ -225,7 +235,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="/." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
       
         <i class="md-icon">import_contacts</i>
       
@@ -239,10 +249,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
     
     <label class="md-nav__link" for="nav-1">
       Basis
@@ -260,7 +272,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/." title="Preface" class="md-nav__link">
+    <a href="../.." title="Preface" class="md-nav__link">
       Preface
     </a>
   </li>
@@ -291,7 +303,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/1-Fundamentals/1.1/" title="1.analysis" class="md-nav__link">
+    <a href="../../1-Fundamentals/1.1/" title="1.analysis" class="md-nav__link">
       1.analysis
     </a>
   </li>
@@ -303,7 +315,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/1-Fundamentals/1.2/" title="2.asymptotic complexity" class="md-nav__link">
+    <a href="../../1-Fundamentals/1.2/" title="2.asymptotic complexity" class="md-nav__link">
       2.asymptotic complexity
     </a>
   </li>
@@ -315,7 +327,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/1-Fundamentals/1.3/" title="3.solving recurrences" class="md-nav__link">
+    <a href="../../1-Fundamentals/1.3/" title="3.solving recurrences" class="md-nav__link">
       3.solving recurrences
     </a>
   </li>
@@ -351,7 +363,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.1/" title="1.Simple Sort" class="md-nav__link">
+    <a href="../../2-sort/2.1/" title="1.Simple Sort" class="md-nav__link">
       1.Simple Sort
     </a>
   </li>
@@ -363,7 +375,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.2/" title="2.Mergesort" class="md-nav__link">
+    <a href="../../2-sort/2.2/" title="2.Mergesort" class="md-nav__link">
       2.Mergesort
     </a>
   </li>
@@ -375,7 +387,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.3/" title="3.Heap and Heapsort" class="md-nav__link">
+    <a href="../../2-sort/2.3/" title="3.Heap and Heapsort" class="md-nav__link">
       3.Heap and Heapsort
     </a>
   </li>
@@ -387,7 +399,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.4/" title="4.Quicksort" class="md-nav__link">
+    <a href="../../2-sort/2.4/" title="4.Quicksort" class="md-nav__link">
       4.Quicksort
     </a>
   </li>
@@ -399,7 +411,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.5/" title="5.Sorting in linear time" class="md-nav__link">
+    <a href="../../2-sort/2.5/" title="5.Sorting in linear time" class="md-nav__link">
       5.Sorting in linear time
     </a>
   </li>
@@ -411,7 +423,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/2-sort/2.6/" title="6.Median and order statictics" class="md-nav__link">
+    <a href="../../2-sort/2.6/" title="6.Median and order statictics" class="md-nav__link">
       6.Median and order statictics
     </a>
   </li>
@@ -447,7 +459,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.1/" title="1.Elementary data structures" class="md-nav__link">
+    <a href="../../3-DataStructures/3.1/" title="1.Elementary data structures" class="md-nav__link">
       1.Elementary data structures
     </a>
   </li>
@@ -459,7 +471,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.2/" title="2.Hash tables" class="md-nav__link">
+    <a href="../../3-DataStructures/3.2/" title="2.Hash tables" class="md-nav__link">
       2.Hash tables
     </a>
   </li>
@@ -471,7 +483,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.3/" title="3.Binary search trees" class="md-nav__link">
+    <a href="../../3-DataStructures/3.3/" title="3.Binary search trees" class="md-nav__link">
       3.Binary search trees
     </a>
   </li>
@@ -483,7 +495,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.4/" title="4.Red-Black trees" class="md-nav__link">
+    <a href="../../3-DataStructures/3.4/" title="4.Red-Black trees" class="md-nav__link">
       4.Red-Black trees
     </a>
   </li>
@@ -495,7 +507,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.5/" title="5.AVL trees" class="md-nav__link">
+    <a href="../../3-DataStructures/3.5/" title="5.AVL trees" class="md-nav__link">
       5.AVL trees
     </a>
   </li>
@@ -507,7 +519,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.6/" title="6.Interval trees" class="md-nav__link">
+    <a href="../../3-DataStructures/3.6/" title="6.Interval trees" class="md-nav__link">
       6.Interval trees
     </a>
   </li>
@@ -519,7 +531,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.7/" title="7.Segment trees" class="md-nav__link">
+    <a href="../../3-DataStructures/3.7/" title="7.Segment trees" class="md-nav__link">
       7.Segment trees
     </a>
   </li>
@@ -531,7 +543,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/3-DataStructures/3.8/" title="8.Disjoint-Set" class="md-nav__link">
+    <a href="../../3-DataStructures/3.8/" title="8.Disjoint-Set" class="md-nav__link">
       8.Disjoint-Set
     </a>
   </li>
@@ -546,10 +558,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-5" type="checkbox" id="nav-1-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-5" type="checkbox" id="nav-1-5" checked>
     
     <label class="md-nav__link" for="nav-1-5">
       IV Advanced Design And Analysis &emsp;Techniques
@@ -565,11 +579,65 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="/4-Advanced/dp/" title="1.Dynamic Programming" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1.Dynamic Programming
+      </label>
+    
+    <a href="./" title="1.Dynamic Programming" class="md-nav__link md-nav__link--active">
       1.Dynamic Programming
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 原理" class="md-nav__link">
+    1. 原理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 基本概念" class="md-nav__link">
+    (1). 基本概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 适用条件" class="md-nav__link">
+    (2). 适用条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -608,7 +676,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/color/" title="Color" class="md-nav__link">
+    <a href="../../color/" title="Color" class="md-nav__link">
       Color
     </a>
   </li>
@@ -639,7 +707,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/intervaltree/1/" title="rect area" class="md-nav__link">
+    <a href="../../PART2/intervaltree/1/" title="rect area" class="md-nav__link">
       rect area
     </a>
   </li>
@@ -675,7 +743,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/ufset/eg/" title="some examples" class="md-nav__link">
+    <a href="../../PART2/ufset/eg/" title="some examples" class="md-nav__link">
       some examples
     </a>
   </li>
@@ -687,7 +755,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/ufset/1/" title="longest consec seq" class="md-nav__link">
+    <a href="../../PART2/ufset/1/" title="longest consec seq" class="md-nav__link">
       longest consec seq
     </a>
   </li>
@@ -699,7 +767,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/ufset/hitbricks/" title="hit bricks" class="md-nav__link">
+    <a href="../../PART2/ufset/hitbricks/" title="hit bricks" class="md-nav__link">
       hit bricks
     </a>
   </li>
@@ -735,7 +803,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/editdistance/" title="edit distance" class="md-nav__link">
+    <a href="../../PART2/dp/editdistance/" title="edit distance" class="md-nav__link">
       edit distance
     </a>
   </li>
@@ -747,7 +815,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/maxsubarray/" title="maximum subarray" class="md-nav__link">
+    <a href="../../PART2/dp/maxsubarray/" title="maximum subarray" class="md-nav__link">
       maximum subarray
     </a>
   </li>
@@ -759,7 +827,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/rematch/" title="expression matching" class="md-nav__link">
+    <a href="../../PART2/dp/rematch/" title="expression matching" class="md-nav__link">
       expression matching
     </a>
   </li>
@@ -771,7 +839,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/longestvalidparentheses/" title="longest valid parentheses" class="md-nav__link">
+    <a href="../../PART2/dp/longestvalidparentheses/" title="longest valid parentheses" class="md-nav__link">
       longest valid parentheses
     </a>
   </li>
@@ -783,7 +851,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/maxrect/" title="maximal rectangle" class="md-nav__link">
+    <a href="../../PART2/dp/maxrect/" title="maximal rectangle" class="md-nav__link">
       maximal rectangle
     </a>
   </li>
@@ -795,7 +863,7 @@
 
 
   <li class="md-nav__item">
-    <a href="/PART2/dp/scramblestr/" title="scramble string" class="md-nav__link">
+    <a href="../../PART2/dp/scramblestr/" title="scramble string" class="md-nav__link">
       scramble string
     </a>
   </li>
@@ -818,12 +886,94 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 原理" class="md-nav__link">
+    1. 原理
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" title="(1). 基本概念" class="md-nav__link">
+    (1). 基本概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" title="(2). 适用条件" class="md-nav__link">
+    (2). 适用条件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
-
+                
+                
+                  <h1>1.Dynamic Programming</h1>
+                
+                <p><font face="思源黑体 CN"></p>
+<h3 id="1">1. 原理</h3>
+<h4 id="1_1">(1). 基本概念</h4>
+<p>动态规划适用于求解多阶段决策过程的最优策略，其基本要素如下。</p>
+<p><html> 
+<body>
+<ul style="margin-top:-13px;margin-bottom:10px;line-height:28px;">
+<li style="margin:12px 26px;">阶段：把一个问题的过程划分为相互联系的阶段 (即子问题)</li>
+<li style="margin:12px 26px;">状态：描述系统情况的信息。一般来说，状态可用一个状态变量描述，记第 $k$ 阶段的状态变量为 $s_k$。</li>
+<li style="margin:12px 26px;">决策：系统在每个阶段都需要作出决策，决策使得系统从当前阶段的状态演变到下一阶段的状态。描述决策的变量记为 $u_k(s_k)$。</li>
+<li style="margin:12px 26px;">状态转移方程：两阶段之间的状态转移，$s_{k+1}=T(s_k, u_k)$。</li>
+<li style="margin:12px 26px;">指标函数：评价所选策略的优劣，通常记为 $V_{k,n}(s_k, u_k, ..., s_n)$，其最优值称为最优值函数，通常记为 $f_k(s_k)=opt\ V_{k,n}(s_k, u_k, s_n)$</li>
+<li style="margin:12px 26px;">动态规划基本方程：通常形式为 $f_k(s_k)=opt\ V_k(s_k, u_k(s_k))+f_{k+1}(u_k(s_k)), k=n,...,1$。通常求解过程是按逆阶段顺序进行。</li>
+</ul>
+</body>
+</html></p>
+<h4 id="2">(2). 适用条件</h4>
+<p><html> 
+<body>
+<ul style="margin-top:-10px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">最优子结构：问题的最优解由子问题的最优解组成；</li>
+<li style="margin:1px 26px;">无后效性：某阶段的状态一旦确定，则此后过程的演变不再受此前各种状态及决策的影响；</li>
+<li style="margin:1px 26px;">重叠子问题：非必要条件，是动态规划相对于搜索和分治的一个优势，也是空间换时间的体现。</li>
+</ul>
+</body>
+</html></p>
+<p></font></p>
+                
+                  
+                
+              
               
                 
 
@@ -836,6 +986,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../3-DataStructures/3.8/" title="8.Disjoint-Set" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                8.Disjoint-Set
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../color/" title="Color" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Color
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -854,11 +1039,11 @@
       
     </div>
     
-      <script src="/assets/javascripts/application.245445c6.js"></script>
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"/"}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
-        <script src="/js/katex.js"></script>
+        <script src="../../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
       
