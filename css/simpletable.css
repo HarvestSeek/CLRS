@@ -1,0 +1,57 @@
+table.simp
+{ 
+	font-family: Consolas, "思源黑体 CN"; /* 英文字体写在前, 中英文分离 */
+	border-collapse: collapse; /* 是否将表格两边折叠为一条线 */
+	margin-left: 1px;        /* 表格整体与左侧的距离 */
+	font-size: 15px;
+	text-align: center;
+}
+  
+/* tr: 行标签; td: 行中的列标签; th: 行中的标题标签; */
+
+table.simp td, table.simp th /* 公共属性区 */
+{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+	padding: 4px 18px 4px 18px;
+}
+
+/* <tr class="alt"> */
+table.simp td.firstrow 
+{
+	border-left:none;
+	border-top:none;
+	border-right:none;
+}
+
+table.simp td.firstcol 
+{
+	border-left:none;
+	border-top:none;
+	border-bottom:none;
+	
+}
+  
+table.simp td.corner
+{
+    border-left:none;
+	border-top:none;
+}
+
+table.simp td.general
+{
+	border:none;
+	text-align: left;
+}
+
+table.simp td.general2
+{
+	border-left:none;
+	border-top:none;
+	border-bottom:none;
+	text-align: left;
+}
+
+

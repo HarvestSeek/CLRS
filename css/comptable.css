@@ -1,0 +1,23 @@
+table.lrgraph {
+	font-family: Consolas, cycn;
+	font-size: 15px;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table.lrgraph td, table.lrgraph th
+{
+	border-width: 1px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+	padding: 4px 18px 4px 18px;
+}
+
+table.lrgraph th {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #aac8f7;
+	padding: 4px 18px 4px 18px;
+}

@@ -1,0 +1,57 @@
+#basic
+{ 
+	font-family:Consolas, "思源黑体 CN"; /* 英文字体写在前, 中英文分离 */
+	border-collapse:collapse; /* 是否将表格两边折叠为一条线 */
+	margin-left: 0px;        /* 表格整体与左侧的距离 */
+}
+  
+/* tr: 行标签; td: 行中的列标签; th: 行中的标题标签; */
+
+#basic td, #basic th /* 公共属性区 */
+{
+	font-size: 14px; /* local: 16px; remote: 14px */
+	border: 2px solid #FFFFFF; /* 边框宽 边框实线 边框颜色 */
+	padding: 8px 12px 8px 12px;  /* 内边距: 上 右 下 左 */
+}
+  
+#basic td 
+{ 
+	
+	background-color: #e5efeb;
+	/* height: 2.4em;  */  /* 表格高度 */
+	/* font-weight: 500; */ /* 字体加粗 */
+}
+
+#basic th 
+{
+	text-align: center;
+	/*font-size: 16px;*/
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#50aca2;
+	color:#ffffff;           /* 字体颜色: 白 */
+}
+
+/* 用于实现颜色交错, <tr class="alt"> */
+#basic tr.alt td 
+{
+	/* background-color:#e5efeb; */
+}
+
+#basic tr.smallalign td 
+{
+	padding: 8px 29px 8px 29px;
+}
+
+#basic tr.s1middle td
+{
+	padding: 8px 29px 8px 29px;
+	text-align: center;
+}
+  
+#basic td:hover 
+{
+    /* border: 1px solid red; */
+}
+
+

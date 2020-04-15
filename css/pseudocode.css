@@ -1,0 +1,15 @@
+pre.pseudocode {
+	font-family: m, Cambria Math;
+	padding-left: 10px;
+	padding-top: 10px;
+	background-color: #fffffe;
+	tab-width: 4;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+pre.pseudocode pcy {
+	font-family: cycn;
+	font-size: 91%;
+}
+

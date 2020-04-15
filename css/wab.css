@@ -1,8 +1,72 @@
-#times
+#wab
 { 
-	font-family:Times New Roman, "思源黑体 CN"; /* 英文字体写在前, 中英文分离 */
-	font-size: 109%;
-	float:left;
+	font-family:Consolas, "思源黑体 CN"; /* 英文字体写在前, 中英文分离 */
+	border-collapse:collapse; /* 是否将表格两边折叠为一条线 */
+	margin-left: 0px;        /* 表格整体与左侧的距离 */
 }
   
-.class1 {float:left}
+/* tr: 行标签; td: 行中的列标签; th: 行中的标题标签; */
+
+#wab td, #wab th /* 公共属性区 */
+{
+	font-size: 13px; /* local: 16px; remote: 14px */
+	border: 1px solid #000000; /* 边框宽 边框实线 边框颜色 */
+	padding: 6px 12px 6px 12px;  /* 内边距: 上 右 下 左 */
+}
+  
+#wab td 
+{ 
+	
+	background-color: #ffffff;
+	/* height: 2.2em;  */  /* 表格高度 */
+	/* font-weight: 500; */ /* 字体加粗 */
+}
+
+#wab th 
+{
+	text-align: center;
+	/*font-size: 16px;*/
+	font-size: 14px;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#cec9c9;
+	color:#000000;           /* 字体颜色: 白 */
+	font-weight: 500;
+}
+
+/* 用于实现颜色交错, <tr class="alt"> */
+#wab tr.alt td 
+{
+	/* background-color:#e5efeb; */
+}
+
+#wab tr.smallalign td 
+{
+	padding: 8px 29px 8px 29px;
+}
+
+#wab tr.s1middle td
+{
+	padding: 8px 29px 8px 29px;
+	text-align: center;
+}
+
+#wab td.noright 
+{
+	border-right: #ffffff 1px hidden
+}
+
+#wab th.sub
+{
+	background-color: #e8e8e8;
+	font-size: 13px;
+}
+  
+#wab td:hover 
+{
+    /* border: 1px solid red; */
+}
+
+// 如果要调整 td 宽度，则 width="number"
+
+#ft{ font-size:19px;}

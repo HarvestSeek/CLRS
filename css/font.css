@@ -1,0 +1,175 @@
+
+/* Times New Roman */
+
+span.tnm-g {
+	font-family: 'Times New Roman';
+	font-size: 103%;
+}
+
+/* Consolas */
+
+span.cons-g {
+	font-family: 'Consolas';
+	font-size: 90%;
+}
+
+/* Source Han Sans CN */
+
+@font-face {
+	font-family: 'cycn';
+	src: url('fonts/sourcehan/siyuan.eot'), /* IE9*/
+		 url('fonts/sourcehan/siyuan.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/sourcehan/siyuan.woff2') format('woff2'),
+		 url('fonts/sourcehan/siyuan.woff') format('woff'), /* chrome、firefox */
+		 url('fonts/sourcehan/siyuan.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+		 url('fonts/sourcehan/siyuan.svg') format('svg'); /* iOS 4.1- */
+	font-weight: normal;
+	font-style: normal;
+} 
+
+@font-face {
+	font-family: 'cycn-eng';
+	src: url('fonts/sourcehan/siyuansub-eng.eot'), /* IE9*/
+		 url('fonts/sourcehan/siyuansub-eng.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/sourcehan/siyuansub-eng.woff2') format('woff2'),
+		 url('fonts/sourcehan/siyuansub-eng.woff') format('woff'), /* chrome、firefox */
+		 url('fonts/sourcehan/siyuansub-eng.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+		 url('fonts/sourcehan/siyuansub-eng.svg') format('svg'); /* iOS 4.1- */
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/* kaiti: weibei */
+
+@font-face {
+	font-family: 'kt';
+	src: url('fonts/kaiti/kt.eot'), /* IE9*/
+	     url('fonts/kaiti/kt.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/kaiti/kt.woff2') format('woff2'),
+		 url('fonts/kaiti/kt.woff') format('woff'), /* chrome、firefox */
+		 url('fonts/kaiti/kt.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+		 url('fonts/kaiti/kt.svg') format('svg'); /* iOS 4.1- */
+	font-weight: normal;
+	font-style: normal;
+} 
+
+span.ikt {
+	font-size: 110%;
+	font-family: kt;
+}
+
+/* Computer Modern */
+
+@font-face {
+    font-family: 'cm';
+    src: url('fonts/computermodern/cm.eot'); /* IE9*/
+    src: url('fonts/computermodern/cm.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('fonts/computermodern/cm.woff2') format('woff2'),
+    url('fonts/computermodern/cm.woff') format('woff'), /* chrome、firefox */
+    url('fonts/computermodern/cm.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('fonts/computermodern/cm.svg') format('svg'); /* iOS 4.1- */
+    font-weight: normal;
+    font-style: normal;
+} 
+
+@font-face {
+	font-family: 'cm';
+	src: url('fonts/computermodern/cmi.eot'); /* IE9*/
+	src: url('fonts/computermodern/cmi.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/computermodern/cmi.woff2') format('woff2'),
+	url('fonts/computermodern/cmi.woff') format('woff'), /* chrome、firefox */
+	url('fonts/computermodern/cmi.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url('fonts/computermodern/cmi.svg') format('svg'); /* iOS 4.1- */
+	font-weight: normal;
+	font-style: italic;
+} 
+
+@font-face {
+	font-family: 'cm';
+	src: url('fonts/computermodern/cmb.eot'); /* IE9*/
+	src: url('fonts/computermodern/cmb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('fonts/computermodern/cmb.woff2') format('woff2'),
+	url('fonts/computermodern/cmb.woff') format('woff'), /* chrome、firefox */
+	url('fonts/computermodern/cmb.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+	url('fonts/computermodern/cmb.svg') format('svg'); /* iOS 4.1- */
+	font-weight: bold;
+	font-style: normal;
+} 
+
+/* KateX Serif */
+
+@font-face {
+    font-family: 'msf';
+	src: 
+		url('fonts/math/serif/normal.woff2') format('woff2'),
+		url('fonts/math/serif/normal.woff') format('woff'),
+		url('fonts/math/serif/normal.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+} 
+
+@font-face {
+	font-family: 'msf';
+	src: 
+		url('fonts/math/serif/italic.woff2') format('woff2'),
+		url('fonts/math/serif/italic.woff') format('woff'),
+		url('fonts/math/serif/italic.ttf') format('truetype'); 
+	font-weight: normal;
+	font-style: italic;
+} 
+
+@font-face {
+	font-family: 'msf';
+	src: 
+		url('fonts/math/serif/bold.woff2') format('woff2'),
+		url('fonts/math/serif/bold.woff') format('woff'),
+		url('fonts/math/serif/bold.ttf') format('truetype'); 
+	font-weight: bold;
+	font-style: normal;
+} 
+
+/* Katex Math */
+
+@font-face {
+    font-family: 'm';
+	src: 
+		url('fonts/math/general/normal.woff2') format('woff2'),
+		url('fonts/math/general/normal.woff') format('woff'),
+		url('fonts/math/general/normal.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+} 
+
+@font-face {
+	font-family: 'm';
+	src: 
+		url('fonts/math/general/italic.woff2') format('woff2'),
+		url('fonts/math/general/italic.woff') format('woff'),
+		url('fonts/math/general/italic.ttf') format('truetype'); 
+	font-weight: normal;
+	font-style: italic;
+} 
+
+@font-face {
+	font-family: 'm';
+	src: 
+		url('fonts/math/general/bold.woff2') format('woff2'),
+		url('fonts/math/general/bold.woff') format('woff'),
+		url('fonts/math/general/bold.ttf') format('truetype'); 
+	font-weight: bold;
+	font-style: normal;
+} 
+
+@font-face {
+	font-family: 'm';
+	src: 
+		url('fonts/math/general/bolditalic.woff2') format('woff2'),
+		url('fonts/math/general/bolditalic.woff') format('woff'),
+		url('fonts/math/general/bolditalic.ttf') format('truetype'); 
+	font-weight: bold;
+	font-style: italic;
+} 
+
+
+

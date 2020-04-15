@@ -2,7 +2,6 @@
 
 
 
-
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
@@ -10,31 +9,11 @@
 	
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
       
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.pipeline.stopwords" content="True">
-      
-        <meta name="lang:search.pipeline.trimmer" content="True">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
     
 	<meta name="format-detection" content="telephone=no">
 
@@ -44,9 +23,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.89dc9fe3.min.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecd4686e.min.css">
       
       
         
@@ -55,118 +34,110 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
-    
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
       <link rel="stylesheet" href="../../css/katex.css">
     
+      <link rel="stylesheet" href="../../css/basic.css">
+    
       <link rel="stylesheet" href="../../css/wab.css">
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css">
+      <link rel="stylesheet" href="../../css/font.css">
+    
+      <link rel="stylesheet" href="../../css/simpletable.css">
+    
+      <link rel="stylesheet" href="../../css/ktblock.css">
+    
+      <link rel="stylesheet" href="../../css/pseudocode.css">
+    
+      <link rel="stylesheet" href="../../css/comptable.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
     
     
       
         
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "UA-117404761-1", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-117404761-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
 <script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
   </head>
   
+  
     
     
     <body dir="ltr" data-md-color-primary="green" data-md-color-accent="blue">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-      </defs>
-    </svg>
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-    
-      <a href="#1" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon">import_contacts</i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            <span class="md-header-nav__topic">
-              Learning Notes of Algorithm
-            </span>
-            <span class="md-header-nav__topic">
-              
-                3.Binary search trees
-              
-            </span>
-          
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-header-nav__button md-logo" aria-label="Learning Notes of Algorithm">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Learning Notes of Algorithm
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              3.Binary search trees
+            
+          </span>
         </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-          
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
       </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Type to start searching
           </div>
@@ -176,23 +147,22 @@
     </div>
   </div>
 </div>
-        
-      </div>
-      
-    </div>
+    
+    
   </nav>
 </header>
     
-    <div class="md-container">
+    <div class="md-container" data-md-component="container">
       
         
       
       
         
+          
 
   
 
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -201,7 +171,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../.." title="Basis" class="md-tabs__link md-tabs__link--active">
+        <a href="../.." class="md-tabs__link md-tabs__link--active">
           Basis
         </a>
       
@@ -214,7 +184,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../color/" title="Problem Sets" class="md-tabs__link">
+        <a href="../../color/" class="md-tabs__link">
           Problem Sets
         </a>
       
@@ -225,20 +195,22 @@
     </ul>
   </div>
 </nav>
+        
       
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
           
             
               <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning Notes of Algorithm" class="md-nav__button md-logo" aria-label="Learning Notes of Algorithm">
       
-        <i class="md-icon">import_contacts</i>
-      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,15.4V6.1L13.71,10.13L18.09,10.5L14.77,13.39L15.76,17.67M22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.45,13.97L5.82,21L12,17.27L18.18,21L16.54,13.97L22,9.24Z" /></svg>
+
     </a>
     Learning Notes of Algorithm
   </label>
@@ -254,13 +226,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
     
     <label class="md-nav__link" for="nav-1">
       Basis
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Basis" data-md-level="1">
       <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Basis
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -285,13 +263,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-2" type="checkbox" id="nav-1-2">
     
     <label class="md-nav__link" for="nav-1-2">
       I Foundations
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="I Foundations" data-md-level="2">
       <label class="md-nav__title" for="nav-1-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         I Foundations
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -345,13 +329,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-3" type="checkbox" id="nav-1-3">
     
     <label class="md-nav__link" for="nav-1-3">
       II Sorting and Order Statistics
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="II Sorting and Order Statistics" data-md-level="2">
       <label class="md-nav__title" for="nav-1-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         II Sorting and Order Statistics
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -443,13 +433,19 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-4" type="checkbox" id="nav-1-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-4" type="checkbox" id="nav-1-4" checked>
     
     <label class="md-nav__link" for="nav-1-4">
       III Data Structures
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="III Data Structures" data-md-level="2">
       <label class="md-nav__title" for="nav-1-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         III Data Structures
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -488,11 +484,14 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         3.Binary search trees
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
       </label>
     
     <a href="./" title="3.Binary search trees" class="md-nav__link md-nav__link--active">
@@ -500,30 +499,35 @@
     </a>
     
       
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 二叉搜索树及其性质" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     1. 二叉搜索树及其性质
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="1. 二叉搜索树及其性质">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" title="(1). 定义" class="md-nav__link">
+  <a href="#1_1" class="md-nav__link">
     (1). 定义
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" title="(2). 性质" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     (2). 性质
   </a>
   
@@ -535,43 +539,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2_1" title="2. 二叉搜索树的操作" class="md-nav__link">
+  <a href="#2_1" class="md-nav__link">
     2. 二叉搜索树的操作
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2. 二叉搜索树的操作">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-search" title="(1).  SEARCH" class="md-nav__link">
+  <a href="#1-search" class="md-nav__link">
     (1).  SEARCH
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-minimummaximum" title="(2). MINIMUM、MAXIMUM" class="md-nav__link">
+  <a href="#2-minimummaximum" class="md-nav__link">
     (2). MINIMUM、MAXIMUM
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-predecessorsuccessor" title="(3). PREDECESSOR、SUCCESSOR" class="md-nav__link">
+  <a href="#3-predecessorsuccessor" class="md-nav__link">
     (3). PREDECESSOR、SUCCESSOR
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-insert" title="(4). INSERT" class="md-nav__link">
+  <a href="#4-insert" class="md-nav__link">
     (4). INSERT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-delete" title="(5). DELETE" class="md-nav__link">
+  <a href="#5-delete" class="md-nav__link">
     (5). DELETE
   </a>
   
@@ -581,10 +585,6 @@
     </nav>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -611,8 +611,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../3.5/" title="5.AVL trees" class="md-nav__link">
-      5.AVL trees
+    <a href="../3.5/" title="5.B-tree" class="md-nav__link">
+      5.B-tree
     </a>
   </li>
 
@@ -665,13 +665,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1-5" type="checkbox" id="nav-1-5">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1-5" type="checkbox" id="nav-1-5">
     
     <label class="md-nav__link" for="nav-1-5">
       IV Advanced Design And Analysis &emsp;Techniques
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="IV Advanced Design And Analysis &emsp;Techniques" data-md-level="2">
       <label class="md-nav__title" for="nav-1-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         IV Advanced Design And Analysis &emsp;Techniques
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -706,13 +712,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       Problem Sets
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+    <nav class="md-nav" aria-label="Problem Sets" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Problem Sets
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -737,13 +749,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
     
     <label class="md-nav__link" for="nav-2-2">
       Interval Tree
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Interval Tree" data-md-level="2">
       <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Interval Tree
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -773,13 +791,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
     
     <label class="md-nav__link" for="nav-2-3">
       Union Find Set
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="Union Find Set" data-md-level="2">
       <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         Union Find Set
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -833,13 +857,19 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
     
     <label class="md-nav__link" for="nav-2-4">
       DP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
     </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+    <nav class="md-nav" aria-label="DP" data-md-level="2">
       <label class="md-nav__title" for="nav-2-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
         DP
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -938,30 +968,35 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
-<nav class="md-nav md-nav--secondary">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" title="1. 二叉搜索树及其性质" class="md-nav__link">
+  <a href="#1" class="md-nav__link">
     1. 二叉搜索树及其性质
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="1. 二叉搜索树及其性质">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" title="(1). 定义" class="md-nav__link">
+  <a href="#1_1" class="md-nav__link">
     (1). 定义
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" title="(2). 性质" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
     (2). 性质
   </a>
   
@@ -973,43 +1008,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2_1" title="2. 二叉搜索树的操作" class="md-nav__link">
+  <a href="#2_1" class="md-nav__link">
     2. 二叉搜索树的操作
   </a>
   
-    <nav class="md-nav">
+    <nav class="md-nav" aria-label="2. 二叉搜索树的操作">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-search" title="(1).  SEARCH" class="md-nav__link">
+  <a href="#1-search" class="md-nav__link">
     (1).  SEARCH
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-minimummaximum" title="(2). MINIMUM、MAXIMUM" class="md-nav__link">
+  <a href="#2-minimummaximum" class="md-nav__link">
     (2). MINIMUM、MAXIMUM
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-predecessorsuccessor" title="(3). PREDECESSOR、SUCCESSOR" class="md-nav__link">
+  <a href="#3-predecessorsuccessor" class="md-nav__link">
     (3). PREDECESSOR、SUCCESSOR
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-insert" title="(4). INSERT" class="md-nav__link">
+  <a href="#4-insert" class="md-nav__link">
     (4). INSERT
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-delete" title="(5). DELETE" class="md-nav__link">
+  <a href="#5-delete" class="md-nav__link">
     (5). DELETE
   </a>
   
@@ -1019,10 +1054,6 @@
     </nav>
   
 </li>
-      
-      
-      
-      
       
     </ul>
   
@@ -1037,6 +1068,9 @@
               
                 
                 
+                  
+                
+                
                   <h1>3.Binary search trees</h1>
                 
                 <p><font face="思源黑体 CN">
@@ -1045,16 +1079,7 @@
 <h4 id="1_1">(1). 定义</h4>
 <p>&emsp;由一棵二叉树组织，每个结点包含属性 <font face="Consolas"><em>key、left、right、parent</em></font>；对任何结点 <font face="Consolas"><em>x</em></font>，其左子树的关键字不大于 <font face="Consolas"><em>x.key</em></font>，右子树的关键字不小于 <font face="Consolas"><em>x.key</em></font>。</br>
 &emsp;结点的前驱 (<font face="Consolas">predecessor</font>)、后继 (<font face="Consolas">successor</font>)：中序的前一个结点和后一个结点。</p>
-<details class="note"><summary>code: DEF</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="p">{</span>
+<details class="note"><summary>code: DEF</summary><div class="highlight"><pre><span></span><code><span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">key</span><span class="p">;</span>
     <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">left</span><span class="p">;</span>
     <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="n">right</span><span class="p">;</span>
@@ -1064,8 +1089,7 @@
 <span class="k">typedef</span> <span class="k">struct</span> <span class="n">Tree</span> <span class="p">{</span>
     <span class="n">Node</span> <span class="o">*</span><span class="n">root</span><span class="p">;</span>
 <span class="p">}</span> <span class="n">BST</span><span class="p">;</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <h4 id="2">(2). 性质</h4>
@@ -1076,16 +1100,7 @@
 &emsp;- 首先，<font face="Consolas"><em>y</em></font> 一定是 <font face="Consolas"><em>x</em></font> 的祖先；然后，<font face="Consolas"><em>y.left</em></font> 也一定是 <font face="Consolas"><em>x</em></font> 的祖先，否则 <font face="Consolas"><em>x</em></font> 会出现在 <font face="Consolas"><em>y</em></font> 的右子树中；最后，假设 <font face="Consolas"><em>y</em></font> 不是最低的，那么最低的那个一定出现在 <font face="Consolas"><em>y</em></font> 的左子树中。</p>
 <h3 id="2_1">2. 二叉搜索树的操作</h3>
 <h4 id="1-search">(1).  <font face="Consolas"><em>SEARCH</em></font></h4>
-<details class="note"><summary>code: SEARCH</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">IterativeBSTSearch</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: SEARCH</summary><div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="o">*</span> <span class="nf">IterativeBSTSearch</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="nb">NULL</span> <span class="o">&amp;&amp;</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">!=</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">key</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
@@ -1095,57 +1110,34 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
 <span class="p">}</span> 
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <p>$O(h)$</p>
 <h4 id="2-minimummaximum">(2). <font face="Consolas"><em>MINIMUM、MAXIMUM</em></font></h4>
 <p>最左即最小，最右即最大。</p>
-<details class="note"><summary>code: MINIMUM</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Minimum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: MINIMUM</summary><div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="o">*</span> <span class="nf">Minimum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
-<details class="note"><summary>code: MAXIMUM</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Maximum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: MAXIMUM</summary><div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="o">*</span> <span class="nf">Maximum</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">r</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <p>$O(h)$</p>
 <h4 id="3-predecessorsuccessor">(3). <font face="Consolas"><em>PREDECESSOR、SUCCESSOR</em></font></h4>
 <p>根据第一部分的结论，可以把寻找前驱或后继的过程分为两种情况。前驱和后继的过程是对称的。</p>
-<details class="note"><summary>code: PREDECESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Predecessor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: PREDECESSOR</summary><div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="o">*</span> <span class="nf">Predecessor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">Maximum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
     <span class="p">}</span>
@@ -1156,21 +1148,10 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">t</span><span class="p">;</span> <span class="c1">// NULL: no pred</span>
 <span class="p">}</span> 
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
-<details class="note"><summary>code: SUCCESSOR</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: SUCCESSOR</summary><div class="highlight"><pre><span></span><code><span class="n">Node</span><span class="o">*</span> <span class="nf">Successor</span><span class="p">(</span><span class="n">Node</span> <span class="o">*</span><span class="n">node</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">Minimum</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
     <span class="p">}</span>
@@ -1181,34 +1162,13 @@
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <p>$O(h)$</p>
 <h4 id="4-insert">(4). <font face="Consolas"><em>INSERT</em></font></h4>
 <p>对任一个关键字，<font face="Consolas">BST</font> 存在一个空位置对应它的插入位置。</p>
-<details class="note"><summary>code: INSERT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">iNode</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: INSERT</summary><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Insert</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">iNode</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">Node</span> <span class="o">*</span><span class="n">r</span> <span class="o">=</span> <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">iNode</span><span class="o">-&gt;</span><span class="n">key</span><span class="p">;</span>
     <span class="n">Node</span> <span class="o">*</span><span class="n">last</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
@@ -1229,8 +1189,7 @@
         <span class="n">last</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">=</span> <span class="n">iNode</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <p>$O(h)$</p>
@@ -1246,18 +1205,7 @@
 </li>
 </ul>
 <p>&emsp;提取一个子过程 <font face="Consolas"><em>TRANSPLANT</em></font>：用一棵子树替换另外一棵子树。</p>
-<details class="note"><summary>code: TRANSPLANT</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: TRANSPLANT</summary><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Transplant</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">des</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">tree</span><span class="o">-&gt;</span><span class="n">root</span> <span class="o">=</span> <span class="n">src</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="n">des</span><span class="p">)</span> <span class="p">{</span>
@@ -1269,27 +1217,10 @@
         <span class="n">src</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">des</span><span class="o">-&gt;</span><span class="n">parent</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span> 
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
-<details class="note"><summary>code: DELETE</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
+<details class="note"><summary>code: DELETE</summary><div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">BST</span> <span class="o">*</span><span class="n">tree</span><span class="p">,</span> <span class="n">Node</span> <span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">left</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Transplant</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">z</span><span class="o">-&gt;</span><span class="n">right</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
@@ -1306,14 +1237,11 @@
         <span class="n">y</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">parent</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-</td></tr></table>
+</code></pre></div>
 
 </details>
 <p>$O(h)$</p>
 <p></font></p>
-                
-                  
                 
               
               
@@ -1330,34 +1258,34 @@
 <footer class="md-footer">
   
     <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../3.2/" title="2.Hash tables" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+          <a href="../3.2/" title="2.Hash tables" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
             </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
                 2.Hash tables
-              </span>
+              </div>
             </div>
           </a>
         
         
-          <a href="../3.4/" title="4.Red-Black trees" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
+          <a href="../3.4/" title="4.Red-Black trees" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
                 4.Red-Black trees
-              </span>
+              </div>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
             </div>
           </a>
         
@@ -1368,11 +1296,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
       </div>
       
     </div>
@@ -1381,15 +1308,24 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      <script src="../../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
         <script src="../../js/katex.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
       
     
   </body>

@@ -1,0 +1,85 @@
+.ruler{
+	width:780px;
+	margin-bottom: 12px;
+}
+
+.ruler div{
+    position:relative;
+    padding-left:54px;
+    margin-bottom: -8px;
+}
+
+.ruler b {
+	font-family: Cambria Math, kt;
+	font-size: 110%;
+	font-weight: normal;
+    display: inline-block;
+    margin-right: 1px;
+    position:absolute;
+    left:-5px;
+    top:0px
+}
+
+blockquote.ktb1 {
+	background: #f9f9f9;
+	color: #000000;
+	width: 800px;
+	border-left: 3px solid #696969;
+	border-top: 2px solid #f0ffff;
+	border-bottom: 2px solid #f0ffff;
+}
+
+.generalcy {
+	font-family: cycn;
+}
+
+.generalcy cy {
+	font-family: cycn-eng;
+	font-size: 94%;
+}
+
+.generalcy cy2 {
+	font-family: cycn-eng;
+	font-size: 93%;
+}
+
+.generalcy cs {
+	font-family: Consolas;
+	font-size: 98%;
+}
+
+.generalcy csg {
+	font-family: Consolas;
+}
+
+.generalcy num1 {
+	font-family: Calibri;
+	font-size: 78%;
+}
+
+.generalcy h52 {
+	font-size: 120%;
+}
+
+.generalcy msf {
+	font-family: msf;
+}
+
+.generalcy mag {
+	font-family: m;
+}
+
+.generalcy mathb {
+	/*for singel escape \ */
+}
+
+.ilmath {
+	margin-left:50px;
+	margin-top: -11px;
+	margin-bottom: 8px;
+}
+
+.waveLine {
+	text-decoration-line: underline; 
+	text-decoration-style: wavy;
+}
