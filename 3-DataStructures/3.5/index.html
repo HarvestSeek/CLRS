@@ -600,7 +600,14 @@
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
-    (4). 删除
+    (4). 借位与合并
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    (5). 删除
   </a>
   
 </li>
@@ -1072,7 +1079,14 @@
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
-    (4). 删除
+    (4). 借位与合并
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    (5). 删除
   </a>
   
 </li>
@@ -1132,13 +1146,15 @@
 <p><cy>B</cy> 树也是对 <cy>BST</cy> 的一种推广。和红黑树不同的是，它是一种针对磁盘设计的数据结构，它的分支因子不小于 <cy>2</cy>，其值由磁盘单元的特性决定。</p>
 <h4 id="1">(1). 辅存的结构</h4>
 <p><img src="../imgl/disk.png" height=180 align=right></p>
-<p>&emsp;一个计算机系统的主存通常由硅芯片构成，而辅存常基于磁盘，右图为一个典型的磁盘驱动器。驱动器由一个或多个盘片构成 (<cy2>platter</cy2>)，它们以固定的速度绕主轴 (<cy2>spindle</cy2>) 旋转。驱动器通过磁臂末尾的磁头读写盘片，磁头可以朝主轴移近或移远。由于需要旋转盘片和移动磁臂，磁盘的存取速度通常比硅芯片低 <cy>5</cy> 个数量级。<br>
-&emsp;为了平摊机械运动所花费的时间，磁盘一个会存取多个页面 (<cy2>page</cy2>)，一页的长度通常为 $2^{11}$~$2^{14}$ 个字节。一旦磁头正确定位，盘片也旋转到页面开头位置，剩下的读写过程就完全电子化了。<br>
-&emsp;综上，存取页面的过程要花费主要时间，因此在分析 <cy>B</cy> 树的效率时，主要考虑：
-<ul style="margin-top:-16px;margin-bottom:10px;line-height:29px;">
-<li style="margin:1px 30px;">磁盘存取次数</li>
-<li style="margin:1px 30px;"><cy>CPU</cy> 运行时间</li>
-</ul></p>
+<p>&emsp;计算机系统的主存通常由硅芯片构成，辅存基于磁盘。右图为一个典型的磁盘驱动器，它由一个或多个盘片构成 (<cy2>platter</cy2>)，盘片以固定的速度绕主轴 (<cy2>spindle</cy2>) 旋转。驱动器通过磁臂末尾的磁头读写盘片，磁头可以朝主轴移近或移远。由于需要旋转盘片和移动磁臂，磁盘的存取速度通常比硅芯片低 <cy>5</cy> 个数量级。<br>
+&emsp;为平摊机械运动所花费的时间，磁盘一次会存取多个页面 (<cy2>page</cy2>)，一页的长度通常为 $2^{11}$~$2^{14}$ 个字节。一旦磁头正确定位，盘片也旋转到页面开头位置，剩下的读写过程就完全电子化了。<br>
+&emsp;考虑需要在磁盘上持久化存储大量的 $(\mathit{key,\ value})$ 的场景，此时需要一个合适的数据结构保证效率。如果使用 <cy>Hash</cy> 表则会有以下问题：
+<ul style="margin-top:-16px;margin-bottom:3px;line-height:29px;">
+<li style="margin:1px 30px;">开销大、扩展性差：为了保持哈希表的效率需要更大的数组，接近填满后还需要转移数据至更大的哈希表</li>
+<li style="margin:1px 30px;">不支持有序遍历、范围查询</li>
+<li style="margin:1px 30px;">如果桶中的元素过多对磁盘 <cy>IO</cy> (机械运动的开销) 不友好</li>
+</ul>
+若使用红黑树，由于每读取一个结点就很可能导致磁盘的机械运动，尽管在 <cy>CPU</cy> 运行时间上有 $\log$ 效率，但在磁盘 <cy>IO</cy> 上开销很大。因此，我们需要牺牲一部分查找的效率，实现一种多路的平衡树</p>
 <h4 id="2-b">(2). B 树的定义</h4>
 <p>一棵 <cy>B</cy> 树是具有以下性质的有根树：
 <ul style="margin-top:-16px;margin-bottom:10px">
@@ -1150,7 +1166,7 @@
     </ul>
 <li style="margin:1px 26px;">每个内部节点 $x$ 包含 $n+1$ 个指向子结点的指针，且 $\mathit{x.key_i}$ 对各子树的关键字范围加以分割，即 $k_1\leq\mathit{x.key_1}\leq k_2\leq \mathit{x.key_2}\ ...$</li>
 <li style="margin:1px 26px;">每个叶结点具有相同深度，即树的高度 $h$</li>
-<li style="margin:1px 26px;">每棵 <cy>B</cy> 树具有一个最小度数 $t$</li>
+<li style="margin:1px 26px;">每棵 <cy>B</cy> 树具有一个最小度数 $t$ <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
     <li style="margin:1px 46px;">除了根结点外每个结点至少有 $t-1$ 个关键字，相应地，内部节点至少有 $t$ 个孩子</li>
     <li style="margin:1px 46px;">每个结点最多有 $2t-1$ 个关键字，相应地，内部节点至多有 $2t$ 个孩子</li>
@@ -1191,29 +1207,42 @@ $x.c_i$ 根据中间关键字分裂成两个结点，其中间关键字上移到
 </ul></p>
 <p><img src="../imgl/bsplit.png" height=175></p>
 <h4 id="3">(3). 插入</h4>
-<p>插入操作搜索出一条到叶结点的插入路径，并通过分裂结点的方式保证结点的关键字的数量不会超过限制，具有可有以下两种实现方式：
+<p>沿着插入路径找到目标叶子结点后，通过分裂结点保证关键字的数量不会超过限制。具体可有以下两种实现方式：
 <ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
-<li style="margin:1px 26px;">遇到满结点时再分裂：找到待插入的叶结点的位置并插入后，若此结点超限，分裂并递归向上判断</li>
-<li style="margin:1px 26px;">沿途分裂满结点：沿路径下移前判断该子结点是否已满，若满则分裂，从而保证遇到一个满结点时，它的父结点一定未满。这种方法不需要向上回溯</li>
+<li style="margin:1px 26px;">遇到满结点时再分裂：插入到目标位置后，如果发生分裂，其父结点会增加一个 $key$，因此递归向上判断</li>
+<li style="margin:1px 26px;">沿途分裂满结点：为了避免向上回溯，需要保证找到目标结点时，它的父结点未满。因此，在沿插入路径向下的过程中，只要遇到一个满结点就分裂它，这样保证了每个当前结点的父结点都一定未满</li>
 </ul></p>
-<h4 id="4">(4). 删除</h4>
+<h4 id="4">(4). 借位与合并</h4>
+<p>考虑从结点 $x$ 处删除了一个 $\it key$，导致 $x.n=t-2$，有两种方法维护 $x.n\geq t$ 
+<ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
+<li style="margin:1px 26px;">借位：从左兄弟 $x_l$ 或右兄弟 $x_r$ 借来一个关键字，要求 $x_{\mathit{brother}}.n\geq t$</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;">$x_l$ 最右关键字上移，$k_x$ 下移至 $x$ 最左处，同时 $x_l$ 的最右指针成为 $x$ 的最左指针</li>
+    <li style="margin:1px 46px;">$x_r$ 最左关键字上移，$k_x$ 下移至 $x$ 最右处，同时 $x_l$ 的最左指针成为 $x$ 的最右指针</li></ul>
+<li style="margin:1px 26px;">合并：把 $x_{bro}$、$x$ 以及 $k_x$ 合并，指针不会发生改变，要求 $x_{\mathit{brother}}.n\leq t$</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;">$x_{\mathit{brother}}.n + t - 2 + 1\leq 2t-1$</li>
+    <li style="margin:1px 46px;">合并会导致 $x._\mathit{parent}$ 减少一个 $\it key$</li>
+    </ul>
+</ul>
+二者均可以用于修复删除导致的 <cy>B</cy> 树性质的破坏</p>
+<h4 id="5">(5). 删除</h4>
 <p>直到删除导致 $n&lt; t-1$ 再做处理，并不断向上回溯判断：
 <ul style="margin-top:-15px;margin-bottom:10px">
 <li style="margin:1px 26px;">如果待删关键字 $k$ 在非叶结点 $x$ 中，则向左/右找到 $k$ 的前驱/后继，用之代替 $k$，然后递归删除这个前驱/后继</li>
-<li style="margin:1px 26px;">如果待删关键字 $k$ 在叶结点 $x$ 中，从 $x$ 中删除 $k$</li>
+<li style="margin:1px 26px;">如果待删关键字 $k$ 在叶结点 $x$ 中，从 $x$ 中删除 $k$ <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
-    <li style="margin:1px 46px;">若删除后导致 $n&lt; t-1$，且某个相邻兄弟至少包含 $t$ 个关键字，则兄弟的关键字上移、$x$ 父结点的关键字下移至 $x$，并移动兄弟的子结点指针</li>
-    <li style="margin:1px 46px;">否则，将 $x$ 父结点的 $k_i$、$x$ 和它的兄弟合并为一个新结点，并递归判断 $x$ 的父结点</li></ul>
+    <li style="margin:1px 46px;">若删除后导致 $n&lt; t-1$，且某个相邻兄弟至少包含 $t$ 个关键字，借位</li>
+    <li style="margin:1px 46px;">否则，合并，并递归向上判断</li></ul>
 </ul></p>
-<p>为避免回溯，就要保证沿着删除路径下移时，子结点的关键字数一定 $\geq t$
+<p>和插入操作类似，如果要避免回溯，就要在删除路径上沿途处理达到下界的结点
 <ul style="margin-top:-15px;margin-bottom:10px">
 <li style="margin:1px 26px;">沿路径下移前判断该子结点是否 $x.c_i.n=t-1$，若是则进行如下变换</li>
     <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
-    <li style="margin:1px 46px;">若 $c_i$ 一个相邻的兄弟 $c_{l}$ 或 $c_{r}$ 至少包含 $t$ 个关键字，则将 $c_{l}$ 或 $c_{r}$ 的一个关键字升至 $x$，$x$ 的关键字 $k_i$ 降至 $c_i$，同时还要移动 $c_{l}$ 或 $c_{r}$ 的子结点的指针到 $c_i$</li>
-    <li style="margin:1px 46px;">若 $c_i$ 的相邻兄弟都只有 $t-1$ 个关键字，则将 $k_i$、$c_i$ 以及它的一个兄弟合并，$k_i$ 作中间关键字</li></ul>
-<li style="margin:1px 26px;">如果待删关键字 $k$ 在非叶结点 $x$ 中，做以下操作：</li>
+    <li style="margin:1px 46px;">若删除后导致 $n&lt; t-1$，且某个相邻兄弟至少包含 $t$ 个关键字，借位</li>
+    <li style="margin:1px 46px;">否则，合并</li></ul>
+<li style="margin:1px 26px;">如果待删关键字 $k$ 在非叶结点 $x$ 中，递归删除前驱/后继之后，还需要额外：</li>
 <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
-    <li style="margin:1px 46px;">如果 $k$ 的左右孩子中有一个至少包含 $t$ 个关键字，则向左/右找到 $k$ 的前驱/后继，用之代替 $k$，然后递归删除这个前驱/后继</li>
     <li style="margin:1px 46px;">如果 $k$ 的左右孩子都只有 $t-1$ 个关键字，则将这两个孩子与 $k$ 合并作为新的左孩子，然后在新的孩子中递归删除 $k$</li></ul>
 <li style="margin:1px 26px;">如果待删关键字 $k$ 在叶结点 $x$ 中，直接从 $x$ 中删除 $k$</li>
 </ul></p>
@@ -1226,12 +1255,26 @@ $x.c_i$ 根据中间关键字分裂成两个结点，其中间关键字上移到
 <li style="margin:1px 26px;"><cy>B</cy><sup>+</sup> 树每个索引的查询效率相同，而 <cy>B</cy> 树与之相比不够稳定</li>
 </ul></p>
 <h4 id="2_1">(2). 插入、删除</h4>
-<p><cy>B</cy><sup>+</sup> 树的插入删除相比 <cy>B</cy><sup>+</sup> 树有以下不同：
+<p><cy>B</cy><sup>+</sup> 树的插入删除相比 <cy>B</cy> 树有以下不同：
 <ul style="margin-top:-16px;margin-bottom:10px;line-height:30px;">
-<li style="margin:1px 26px;">插入：叶结点分裂时，将中间关键字保存在子结点中</li>
-<li style="margin:1px 26px;">删除：某个叶结点向兄弟结点借记录时，直接借来相应的记录，并用它的 $\it key$ 替换父结点中对应位置的 $\it key$；与兄弟结点合并时，直接删除父结点的记录 $k_i$</li>
+<li style="margin:1px 26px;">插入：叶结点分裂时，将上移的关键字保存在子结点中，其他结点分裂过程相同</li>
+    <ul style="margin-top:0px;margin-bottom:0px;list-style-type:circle;line-height:30px;">
+    <li style="margin:1px 46px;">通常上移的关键字对应的条目存放在右孩子中，实现左闭右开</li>
+    </ul>
+<li style="margin:1px 26px;">删除：叶结点借位时，直接借来兄弟的记录，并修改 $k_i$；叶结点合并时，直接删除父结点的 $k_i$，然后两个兄弟间合并</li>
 </ul></p>
 <p></font></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>也可以通过阶数定义，阶数即结点的最大度，若设其为 $n$，则非叶结点的度的范围在闭区间 $\lceil n/2 \rceil$ 到 $n$ 内&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>这里是借位优先级更高，也可以合并优先级更高&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
               
               
